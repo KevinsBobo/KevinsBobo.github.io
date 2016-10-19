@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Kevins Bobo by KevinsBobo</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/github-dark.css">
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
     <script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <script src="javascripts/markdown.min.js"></script>
+    <script src="/javascripts/respond.js"></script>
+    <script src="/javascripts/markdown.min.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -42,12 +42,24 @@
 
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-	<script type-"text/javascript">
+<script type-"text/javascript">
 	var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
 	if(dir != '/')
 		dir = dir.substring(6,dir.lastIndexOf('/'));
-	alert(dir);
-	</script>
+	else
+		dir = 'index';
+	//alert(dir);
+	var file = "/article/"+dir+".md";
+	$(function(){
+		$.get(file, function(result){
+		$("#content").html(markdown.toHTML(result));
+		});
+	});
+
+	var tit = document.getElementsById("content").childNodes;
+	document.title = tit.value;
+
+</script>
     
   </body>
 </html>
