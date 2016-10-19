@@ -55,7 +55,7 @@
 	$(function(){
 		$.get(file, function(result){
 		$("#content").html(markdown.toHTML(result));
-		console.log($(markdown.toHTML(result)).find(':first'));
+		console.log($(markdown.toHTML(result))[0]);
 		});
 	});
 
