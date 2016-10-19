@@ -9,6 +9,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
     <script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
     <script src="javascripts/respond.js"></script>
+    <script src="javascripts/markdown.min.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -36,12 +37,18 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
-        <h1>
-<a id="kevins-bobos-blog" class="anchor" href="#kevins-bobos-blog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kevins Bobo's Blog</h1>
+		<div id="content"></div>
       </section>
 
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	<script type-"text/javascript">
+		var str = location.href;
+		var arr = str.split("/");
+		delete arr[arr.length-1];
+		var dir = arr.join("/");
+		alert(dir);
+	</script>
     
   </body>
 </html>
