@@ -4,7 +4,7 @@
 
 >不支持评论功能，欢迎通过邮件与我交流。
 
->此页面markdown版本地址：<http://github.com/KevinsBobo/KevinsBobo.github.io/article/index.md>
+>此页面markdown版本地址： <http://github.com/KevinsBobo/KevinsBobo.github.io/article/index.md>
 
 >html版本地址：<http://kevins.pro>
 
