@@ -821,7 +821,7 @@ section .credits.right {
 }
 
 #content {
-	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 @media print, screen and (max-width: 720px) {
