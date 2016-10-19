@@ -33,11 +33,13 @@
           <h1>Kevins Bobo</h1>
           <p>Kevins Bobo&#39;s Blog</p>
           <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/KevinsBobo">KevinsBobo</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
 		<div id="content"></div>
+
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/KevinsBobo">KevinsBobo</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
       </section>
 
     </div>
@@ -52,12 +54,12 @@
 	var file = "/article/"+dir+".md";
 	$(function(){
 		$.get(file, function(result){
-		$("#content").html(markdown.toHTML(result));
+			chtml = markdown.toHTML(result);
+			document.title = $(markdown.toHTML(result))[0].innerText;
+			$("#content").html(chtml);
+			delete chtml;
 		});
 	});
-
-	var tit = document.getElementById("content").childNodes;
-	document.title = tit.innerText + " By KevinsBobo";
 
 </script>
     
