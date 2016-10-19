@@ -45,7 +45,7 @@
 	<script type-"text/javascript">
 	var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
 	if(dir != '/')
-		dir = dir.substring(5);
+		dir = dir.substring(6,dir.lastIndexOf('/'));
 	alert(dir);
 	</script>
     
