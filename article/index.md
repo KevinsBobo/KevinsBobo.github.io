@@ -3,8 +3,8 @@
 >通过markdown.js结合官方主题的方式实现了动态编译，若有兴趣可以阅读[此篇文章](http://kevins.pro/blog/my_blog_come_to_github/)。
 >不支持评论功能，欢迎通过邮件与我交流。
 
-<span id="class">
-</span>
+<p id="class">
+</p>
 
 ##*分类目录*[*\[时间目录\]*](#time)
 ---
