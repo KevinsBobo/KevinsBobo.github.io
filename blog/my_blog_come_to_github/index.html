@@ -9,7 +9,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
     <script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
     <script src="/javascripts/respond.js"></script>
-    <script src="/javascripts/markdown.min.js"></script>
+    <script src="/javascripts/marked.min.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -54,7 +54,7 @@
 	var file = "/article/"+dir+".md";
 	$(function(){
 		$.get(file, function(result){
-			chtml = markdown.toHTML(result);
+			chtml = marked(result);
 			document.title = $(markdown.toHTML(result))[0].innerText + ' By KevinsBobo';
 			$("#content").html(chtml);
 			delete chtml;
