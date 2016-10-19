@@ -55,7 +55,7 @@
 	$(function(){
 		$.get(file, function(result){
 			chtml = marked(result);
-			document.title = $(markdown.toHTML(result))[0].innerText + ' By KevinsBobo';
+			document.title = $(chtml)[0].innerText + ' By KevinsBobo';
 			$("#content").html(chtml);
 			delete chtml;
 		});
