@@ -1,4 +1,4 @@
-# 目录
+# GitHub博客
 >博客搭建在GitHub上，采用静态页面+动态md文件方式。
 >通过marked结合官方主题的方式实现了动态编译，若有兴趣可以阅读[此篇文章](http://kevins.pro/blog/my_blog_come_to_github/)。
 >不支持评论功能，欢迎通过邮件与我交流。
