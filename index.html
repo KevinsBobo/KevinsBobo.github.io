@@ -54,7 +54,10 @@
 	var file = "/article/"+dir+".md";
 	$(function(){
 		$.get(file, function(result){
-			chtml = marked(result.innerText);
+			console.log(result);
+			var thtml = result.innerText;
+			console.log(thtml);
+			var chtml = marked(result);
 			document.title = $(chtml)[0].innerText + ' By KevinsBobo';
 			$("#content").html(chtml);
 			delete chtml;
