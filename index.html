@@ -54,14 +54,12 @@
 	var file = "/article/"+dir+".md";
 	$(function(){
 		$.get(file, function(result){
-		$("#content").html(markdown.toHTML(result));
-		console.log($(markdown.toHTML(result))[0]);
+			chtml = markdown.toHTML(result);
+			document.title = $(markdown.toHTML(result))[0].innerText;
+			$("#content").html(chtml);
+			delete chtml;
 		});
 	});
-
-	var tit = document.getElementById("content");
-	//document.title = tit.innerText + " By KevinsBobo";
-	console.log(tit);
 
 </script>
     
