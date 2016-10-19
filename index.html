@@ -52,7 +52,7 @@
 	var file = "/article/"+dir+".md";
 	$(function(){
 		$.get(file, function(result){
-		$("#content").html(result);
+		$("#content").html(markdown.toHTML(result));
 		});
 	});
 
