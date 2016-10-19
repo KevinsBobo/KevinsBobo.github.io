@@ -50,11 +50,11 @@
 		dir = 'index';
 	//alert(dir);
 	var file = "/article/"+dir+".md";
-	function(){
+	$(function(){
 		$.get(file, function(result){
 		$("#div").html(result);
 		});
-	};
+	});
 
 </script>
     
