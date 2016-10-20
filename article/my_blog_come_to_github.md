@@ -21,7 +21,7 @@
 + 增加了如下js代码来使用Marked库来编译md文件并输出博客文章：
 
 ```js
-// 获取当前index.html文件所在文件夹名
+// 获取当前index.html所在的文件夹名
 var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
 if(dir != '/')
 	dir = dir.substring(6,dir.lastIndexOf('/'));
@@ -52,7 +52,7 @@ $(function(){
 
 需要注意的地方：
 + md第一行内容最好是一级标题格式的文章标题，这样可以精准修改网页标题
-+ 每在写article文件夹下写一篇md文章就需要在blog文件夹下建立同名的文件夹并将根目录下的index.html文件放进去。
++ 每在article文件夹下写一篇md文章就需要在blog文件夹下建立同名的文件夹并将根目录下的index.html文件放进去。
 + 因为文章内容是动态获取的，在网页源码中并不存在文章内容，所以搜索引擎无法抓到文章内容，注重SEO的朋友要慎重。但是搜索引擎可以抓取存放在GitHub仓库中的md文件内容，网友们还是可以通过搜索找到我写的文章，这对于我来说足够了，毕竟简单与快捷才是我想要的。
 + 没有评论功能，可能对于部分朋友来说是个坑。
 + 没时间或想要直接使用的朋友可以直接克隆[我的仓库](http://github.com/KevinsBobo/KevinsBobo.github.io/)然后删除我的文章并修改根目录下的index.html和CNAME文件信息之后上传至可以创建个人主页或项目主页的仓库就可以了。
