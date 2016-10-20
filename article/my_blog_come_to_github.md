@@ -18,30 +18,30 @@
 + 是经过微调的官方主题主页文件，其中的引用都改成了绝对引用，增加了一个id为content的DIV标签。
 + 引入了[marked.min.js](http://github.com/chjj/marked/marked.min.js)这个强大的MarkDown编译库。
 + 增加了如下js代码来使用Marked库来编译md文件并输出博客文章：
-'
-//获取当前index.html文件所在文件夹名
-var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
-if(dir != '/')
-	dir = dir.substring(6,dir.lastIndexOf('/'));
-else
-	dir = 'index';
 
-//通过文件夹名获得md文件地址
-var file = "/article/"+dir+".md";
-
-//通过Ajax获取md文件内容
-$(function(){
-	$.get(file, function(result){
-		//编译md内容为html格式
-		var chtml = marked(result);
-		//获得编译后的第一个标签文字作为页面标题
-		document.title = $(chtml)[0].innerText + ' By KevinsBobo';
-		//输出html格式文章
-		$("#content").html(chtml);
-		delete chtml;
+	//获取当前index.html文件所在文件夹名
+	var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
+	if(dir != '/')
+		dir = dir.substring(6,dir.lastIndexOf('/'));
+	else
+		dir = 'index';
+	
+	//通过文件夹名获得md文件地址
+	var file = "/article/"+dir+".md";
+	
+	//通过Ajax获取md文件内容
+	$(function(){
+		$.get(file, function(result){
+			//编译md内容为html格式
+			var chtml = marked(result);
+			//获得编译后的第一个标签文字作为页面标题
+			document.title = $(chtml)[0].innerText + ' By KevinsBobo';
+			//输出html格式文章
+			$("#content").html(chtml);
+			delete chtml;
+		});
 	});
-});
-'
+
 
 需要注意的地方：
 + md第一行内容最好是一级标题格式的文章标题，这样可以精准修改网页标题
