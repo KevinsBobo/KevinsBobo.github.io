@@ -2,7 +2,7 @@
 
 > 欢迎转载，转载请注明出处！
 
-> MarkDown版本: [my\_blog\_come\_to\_github.md](http://github.com/KevinsBobo/KevinsBobo.github.io/article/my_blog_come_to_github.md)
+> MarkDown版本: [my\_blog\_come\_to\_github.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/my_blog_come_to_github.md)
 
 > Html版本: [my\_blog\_come\_to\_github](http://kevins.pro/blog/my_blog_come_to_github/)
 
@@ -12,7 +12,7 @@
 
 首先通过选择官方模板文件的方式建立自己的博客页面，然后在更新之后仓库里添加article和bolg这两个文件夹。
 + article文件夹下存放MarkDowm格式的.md文件，这些是博客文章，命名格式不限。
-+ blog文件夹下存放和article文件夹下md文件同名且不带后缀的文件夹，这些文件夹下都存放相同的[index.html](http://github.com/KevinsBobo/KevinsBobo.github.io/index.html)文件。
++ blog文件夹下存放和article文件夹下md文件同名且不带后缀的文件夹，这些文件夹下都存放相同的[index.html](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/index.html)文件。
 
 关于这个index.html文件：
 + 是经过微调的官方主题主页文件，其中的引用都改成了绝对引用，增加了一个id为content的DIV标签。
