@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="stylesheet" href="/stylesheets/github-dark.css">
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+	<link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/9.7.0/styles/default.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
     <script src="/javascripts/respond.js"></script>
-    <script src="/javascripts/marked.min.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -45,6 +44,8 @@
 
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+<script src="/javascripts/marked.min.js"></script>
+<script src="http://cdn.bootcss.com/highlight.js/9.7.0/highlight.min.js"></script>   
 <script type-"text/javascript">
 	var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
 	if(dir != '/')
@@ -57,14 +58,17 @@
 		$.get(file, function(result){
 			//console.log(result);
 			var chtml = marked(result);
+			var content = $('#content');
 			document.title = $(chtml)[0].innerText + ' By KevinsBobo';
-			$("#content").html(chtml);
+			content.html(chtml);
 			delete chtml;
+			$('pre > code', content).each(function() {
+				hljs.highlightBlock(this);
+			});
 		});
 	});
 
 </script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>   
 <script type-"text/javascript">
 	hljs.initHighlightingOnLoad();
 </script>
