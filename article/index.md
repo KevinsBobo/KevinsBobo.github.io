@@ -4,9 +4,9 @@
 
 >不支持评论功能，欢迎通过邮件与我交流。
 
->此页面MarkDown版本：[index.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/index.md)
-
 >Html版本：[index.html](http://kevins.pro)
+
+>MarkDown版本：[index.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/index.md)
 
 <span id="class"></span>
 ## *分类目录* [*\[查看时间目录\]*](#time)

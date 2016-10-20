@@ -2,9 +2,9 @@
 
 > 欢迎转载，转载请注明出处！
 
-> MarkDown版本: [my\_blog\_come\_to\_github.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/my_blog_come_to_github.md)
-
 > Html版本: [my\_blog\_come\_to\_github](http://kevins.pro/blog/my_blog_come_to_github/)
+
+> MarkDown版本: [my\_blog\_come\_to\_github.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/my_blog_come_to_github.md)
 
 关于在GitHub上搭建博客网上已经有了很多讨论，我也是看了这些讨论之后才决定将博客从搭建在OpenShift上的Wordpress转移到GitHub的，相关原理、优劣和开通方法在此不再赘述。想要从头搭建的朋友可上网搜索相关教程。本文主要记录我在不采用Jekyll等工具实现的静态页面+动态更新md文件的方法。
 
@@ -53,6 +53,6 @@ $(function(){
 需要注意的地方：
 + md第一行内容最好是一级标题格式的文章标题，这样可以精准修改网页标题
 + 每在article文件夹下写一篇md文章就需要在blog文件夹下建立同名的文件夹并将根目录下的index.html文件放进去。
-+ 因为文章内容是动态获取的，在网页源码中并不存在文章内容，所以搜索引擎无法抓到文章内容，注重SEO的朋友要慎重。我采用设定网站sitemap.xml文件内容为存放在GitHub仓库中的md文件，这样还是可以通过Google找到我写的文章，这对于我来说足够了，毕竟简单与快捷才是我想要的。
++ 因为文章内容是动态获取的，在网页源码中并不存在文章内容，所以搜索引擎无法抓到文章内容，注重SEO的朋友要慎重。我采用设定网站sitemap.xml文件内容为可以通过我的域名访问的没有经过编译的md文件，这样还是可以通过Google找到我写的文章，相信懂的朋友还是能愉快的发现html版本链接并阅读我的文章的。
 + 没有评论功能，可能对于部分朋友来说是个坑。
 + 没时间或想要直接使用的朋友可以直接克隆[我的仓库](http://github.com/KevinsBobo/KevinsBobo.github.io/)然后删除我的文章并修改根目录下的index.html和CNAME文件信息之后上传至可以创建个人主页或项目主页的仓库就可以了。
