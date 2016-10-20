@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Kevins Bobo by KevinsBobo</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/github-dark.css">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+    <script src="https://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+    <script src="/javascripts/respond.js"></script>
+    <script src="/javascripts/marked.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/KevinsBobo">View On GitHub</a></li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+			<h1><a href="http://kevins.pro">Kevins Bobo</a></h1>
+		  <p><a href="mailto:kevins.bobo@gmail.com">kevins.bobo@gmail.com</a></p>
+          <hr>
+        </div>
+
+		<div id="content"></div>
+
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/KevinsBobo">KevinsBobo</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+<script type-"text/javascript">
+	var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
+	if(dir != '/')
+		dir = dir.substring(6,dir.lastIndexOf('/'));
+	else
+		dir = 'index';
+	//alert(dir);
+	var file = "/article/"+dir+".md";
+	$(function(){
+		$.get(file, function(result){
+			//console.log(result);
+			var chtml = marked(result);
+			document.title = $(chtml)[0].innerText + ' By KevinsBobo';
+			$("#content").html(chtml);
+			delete chtml;
+		});
+	});
+
+</script>
+    
+  </body>
+</html>
