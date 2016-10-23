@@ -623,7 +623,7 @@ blockquote {
 }
 
 code {
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, Terminal;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monosp;
   color: #efefef;
   font-size: 14px;
   margin: 0 4px;
