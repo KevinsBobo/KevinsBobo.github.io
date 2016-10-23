@@ -16,4 +16,4 @@
 ---
 
 ## 2016年10月19日
-+ 练习了线性表的数组建立方式
++ 练习了线性表的数组建立方式-[Code](http://github.com/KevinsBobo/book_code/blob/master/data_structure/01_list_01_array.c)

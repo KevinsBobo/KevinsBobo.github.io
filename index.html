@@ -61,7 +61,6 @@
 			var content = $('#content');
 			document.title = $(chtml)[0].innerText + ' By KevinsBobo';
 			content.html(chtml);
-			delete chtml;
 			$('pre > code', content).each(function() {
 				hljs.highlightBlock(this);
 			});

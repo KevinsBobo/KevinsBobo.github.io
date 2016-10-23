@@ -41,7 +41,6 @@ $(function(){
 		document.title = $(chtml)[0].innerText + ' By KevinsBobo';
 		// 输出html格式文章
 		content.html(chtml);
-		delete chtml;
 		// 高亮 markdown 文档中的代码
 		$('pre > code', content).each(function() {
 			hljs.highlightBlock(this);
