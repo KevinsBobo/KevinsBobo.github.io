@@ -8,11 +8,8 @@
 
 ---
 
-+ 总结了《大话数据结构》中线性表的循环链表 - [Code](http://github/KevinsBobo/book_code/blob/master/data_structure/01_list_04_cricular.md)
-
----
-
 ## 2016年10月24日
++ 总结了《大话数据结构》中线性表的循环链表 - [Code](http://github/KevinsBobo/book_code/blob/master/data_structure/01_list_04_cricular.md)
 + 总结了《大话数据结构》中线性表的静态表建立方式 - [Code](http://github/KevinsBobo/book_code/blob/master/data_structure/01_list_03_static.md)
 
 ---
