@@ -8,6 +8,11 @@
 
 ---
 
+## 2016年10月24日
++ 总结了《大话数据结构》中线性表的静态表建立方式 - + [Code](http://github/KevinsBobo/book_code/blob/master/data_structure/01_list_03_static.md)
+
+---
+
 ## 2016年10月23日
 + 练习了《大话数据结构》中线性表的单链表建立方式 - [Code](http://github.com/KevinsBobo/Book_code/blob/master/data_structure/01_list_02_link.c)
 
