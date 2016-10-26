@@ -23,10 +23,12 @@
 ```js
 // 获取当前index.html所在的文件夹名
 var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
-if(dir != '/')
+var file;
+if(dir != '/'){
 	dir = dir.substring(6,dir.lastIndexOf('/'));
-else
-	dir = 'index';
+	file = "/article/"+dir+".md";
+}else
+	file = "/README.md";
 
 // 通过文件夹名获得md文件地址
 var file = "/article/"+dir+".md";

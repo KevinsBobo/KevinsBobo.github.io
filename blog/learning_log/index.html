@@ -48,12 +48,13 @@
 <script src="http://cdn.bootcss.com/highlight.js/9.7.0/highlight.min.js"></script>   
 <script type-"text/javascript">
 	var dir = location.href.substring(17,location.href.lastIndexOf('/')+1);
-	if(dir != '/')
+	var file;
+	if(dir != '/'){
 		dir = dir.substring(6,dir.lastIndexOf('/'));
-	else
-		dir = 'index';
+		file = "/article/"+dir+".md";
+	}else
+		file = "/README.md";
 	//alert(dir);
-	var file = "/article/"+dir+".md";
 	$(function(){
 		$.get(file, function(result){
 			//console.log(result);
