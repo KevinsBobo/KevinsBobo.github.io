@@ -8,8 +8,8 @@
 
 >MarkDown版本：[index.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/index.md)
 
-<span id="class"></span>
-## *分类目录* [*\[查看时间目录\]*](#time)
+<span id="分类目录-查看时间目录"></span>
+## *分类目录* [*\[查看时间目录\]*](#时间目录-查看分类目录)
 ---
 ### 偷懒必须先勤快
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)
@@ -17,8 +17,8 @@
 ### 学习日志
 #### [学无止境](http://kevins.pro/blog/learning_log/)
 ---
-<span id="time"></span>
-## *时间目录* [*\[查看分类目录\]*](#class)
+<span id="时间目录-查看分类目录"></span>
+## *时间目录* [*\[查看分类目录\]*](#分类目录-查看时间目录)
 ---
 ### 2016年10月
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)
