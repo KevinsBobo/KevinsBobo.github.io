@@ -638,14 +638,14 @@ code {
 
 pre {
   padding: 8px 15px;
-  background: #191919;
+  background: #272727;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
   -ms-border-radius: 2px;
   -khtml-border-radius: 2px;
   border-radius: 2px;
-  border: 1px solid #121212;
+  border: 1px solid #272727;
   -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
   -o-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
