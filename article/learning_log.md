@@ -7,9 +7,10 @@
 > MarkDown版本：[learning\_log.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/learning_log.md)
 
 ---
-## 2016年10月26日
 
-+ 复习了《C和指针》前两章 - [code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/01_quickly_start.md)
+## 2016年10月26日
++ 复习了《C和指针》前两章 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/01_quickly_start.md)
+
 ---
 
 ## 2016年10月24日
