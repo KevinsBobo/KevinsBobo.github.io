@@ -7,6 +7,10 @@
 > MarkDown版本：[learning\_log.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/learning_log.md)
 
 ---
+## 2016年10月26日
+
++ 复习了《C和指针》前两章 - [code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/01_quickly_start.md)
+---
 
 ## 2016年10月24日
 + 总结了《大话数据结构》中线性表的循环链表 - [Code](http://github.com/KevinsBobo/book_code/blob/master/data_structure/01_list_04_cricular.md)
