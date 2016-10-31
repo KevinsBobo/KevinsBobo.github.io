@@ -8,6 +8,11 @@
 
 ---
 
+## 2016年10月31日
++ 复习了《C和指针》第三章
+
+---
+
 ## 2016年10月26日
 + 复习了《C和指针》前两章 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/01_quickly_start.md)
 
