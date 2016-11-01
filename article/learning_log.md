@@ -8,6 +8,11 @@
 
 ---
 
+## 2016年11月01日
++ 练习了《C和指针》第三章练习题 [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/03_data_question_24.c)
+
+---
+
 ## 2016年10月31日
 + 复习了《C和指针》第三章
 
