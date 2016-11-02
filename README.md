@@ -6,7 +6,7 @@
 
 >Html版本：[index.html](http://kevins.pro)
 
->MarkDown版本：[index.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/README.md)
+>MarkDown版本：[README.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/README.md)
 
 <span id="分类目录-查看时间目录"></span>
 ## *分类目录* [*\[查看时间目录\]*](#时间目录-查看分类目录)
