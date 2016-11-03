@@ -8,6 +8,11 @@
 
 ---
 
+## 2016年11月03日
++ 复习了《C和指针》第六章——指针
+
+---
+
 ## 2016年11月02日
 + 复习了《C和指针》第四、五章
 + 《C和指针》第五章练习题5 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/05_operators_exercises_5.c)
