@@ -8,6 +8,12 @@
 
 ---
 
+## 2016年11月08日
++ 复习了《C和指针》第七章
++ 练习了《C和指针》第七章——第6题 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/07_functions_exercises_6.c)
+
+---
+
 ## 2016年11月04日
 + 练习了《C和指针》第六章——第4题 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/06_pointers_exercises_4.c)
 + 复习了《C和指针》第五章——第4题
