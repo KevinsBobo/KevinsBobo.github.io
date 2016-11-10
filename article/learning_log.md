@@ -8,6 +8,11 @@
 
 ---
 
+## 2016年11月10日
++ 练习了《C和指针》第八章——问题4 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/08_array_question_4.c)
+
+---
+
 ## 2016年11月9日
 + 复习了《C和指针》第八章
 
