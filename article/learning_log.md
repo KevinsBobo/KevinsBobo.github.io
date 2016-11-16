@@ -8,6 +8,11 @@
 
 ---
 
+## 2016年11月15日
++ 练习了《C和指针》第九章——第15题 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/09_str_exercises_15.c)
+
+---
+
 ## 2016年11月11日
 + 复习了《C和指针》第九章
 + 验证书中关于strtok函数返回指针内容的错误 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/09_str_function_strtok.c)
