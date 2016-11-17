@@ -8,10 +8,14 @@
 
 ---
 
+## 2016年11月17日
++ 练习了《C和指针》第九章——第17题 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/09_str_exercises_17.c)
+
+---
+
 ## 2016年11月16日
 + 练习了《C和指针》第九章——第16题 - [Code](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/09_str_exercises_16.c)
 
----
 ---
 
 ## 2016年11月15日
