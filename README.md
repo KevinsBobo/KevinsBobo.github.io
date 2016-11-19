@@ -12,6 +12,7 @@
 ## *分类目录* [*\[查看时间目录\]*](#时间目录-查看分类目录)
 ---
 ### 偷懒必须先勤快
+#### [书籍库](http://github.com/KevinsBobo/books/)
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)
 #### [Git,Vim,Shell,Gcc,Gdb常用命令及快捷键速查表](http://github.com/KevinsBobo/cheat-sheet/)
 ### 学习日志
@@ -20,6 +21,8 @@
 <span id="时间目录-查看分类目录"></span>
 ## *时间目录* [*\[查看分类目录\]*](#分类目录-查看时间目录)
 ---
+### 2016年11月
+#### [书籍库](http://github.com/KevinsBobo/books/)
 ### 2016年10月
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)
 #### [学无止境](http://kevins.pro/blog/learning_log/)
