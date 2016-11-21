@@ -8,6 +8,12 @@
 
 ---
 
+## 2016年11月21日
++ 练习了《程序员代码面试指南》第一章第1节 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_01_getMin.c)
++ 练习了《程序员代码面试指南》第一章第3节 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_03_reverse.c)
+
+---
+
 ## 2016年11月18日
 + 复习了《C和指针》第十、十一章
 
