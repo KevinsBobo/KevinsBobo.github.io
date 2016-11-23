@@ -8,14 +8,21 @@
 
 ---
 
+## 2016年11月23日
++ 练习了《程序员代码面试指南》第一章第7节：打印窗口最大值 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_07_getMaxWindow.c)
++ 练习了《程序员代码面试指南》第一章第6节：用栈实现汉诺塔 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_06_hannoi_stack.c)
++ 练习了《程序员代码面试指南》第一章第6节：用递归实现汉诺塔 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_06_hannoi_recursion.c)
+
+---
+
 ## 2016年11月22日
-+ 练习了《程序员代码面试指南》第一章第5节 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_05_sortStackByStack.c)
++ 练习了《程序员代码面试指南》第一章第5节：用一个栈实现另一个栈排序 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_05_sortStackByStack.c)
 
 ---
 
 ## 2016年11月21日
-+ 练习了《程序员代码面试指南》第一章第1节 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_01_getMin.c)
-+ 练习了《程序员代码面试指南》第一章第3节 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_03_reverse.c)
++ 练习了《程序员代码面试指南》第一章第1节：设计一个有GetMin功能的栈 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_01_getMin.c)
++ 练习了《程序员代码面试指南》第一章第3节：仅用递归函数和栈操作逆序一个栈 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_03_reverse.c)
 
 ---
 
