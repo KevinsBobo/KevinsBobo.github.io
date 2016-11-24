@@ -6,6 +6,8 @@
 
 > MarkDown版本: [my\_blog\_come\_to\_github.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/my_blog_come_to_github.md)
 
+> [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)
+
 关于在GitHub上搭建博客网上已经有了很多讨论，我也是看了这些讨论之后才决定将博客从搭建在OpenShift上的Wordpress转移到GitHub的，相关原理、优劣和开通方法在此不再赘述。想要从头搭建的朋友可上网搜索相关教程。本文主要记录我在不采用Jekyll等工具实现的静态页面+动态更新md文件的方法。
 
 在GitHub上开通个人主页之后，相当于开辟了一块儿可访问的网络空间，仓库中的所有文件都可以通过Http访问，包括md纯文本文件。所以想要解决只要上传/修改md文件就可以添加/修改博客文章的问题就有了头绪。

@@ -6,6 +6,8 @@
 
 > MarkDown版本：[learning\_log.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/learning_log.md)
 
+> [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)
+
 ---
 
 ## 2016年11月23日
