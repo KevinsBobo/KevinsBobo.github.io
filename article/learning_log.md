@@ -10,6 +10,11 @@
 
 ---
 
+## 2016年11月24日
++ 学习了《C++ Primer》前两章
+
+---
+
 ## 2016年11月23日
 + 练习了《程序员代码面试指南》第一章第7节：打印窗口最大值 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_07_getMaxWindow.c)
 + 练习了《程序员代码面试指南》第一章第6节：用栈实现汉诺塔 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_06_hannoi_stack.c)
