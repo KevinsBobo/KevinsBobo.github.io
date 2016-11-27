@@ -26,7 +26,7 @@ https://github.com/OpenGrok/OpenGrok/releases - （下载地址）
 
 https://github.com/OpenGrok/OpenGrok/wiki/How-to-install-OpenGrok - （官方英文安装指导手册）
 
-https://github.com/crazygit/temp/blob/master/setup\_opengrok.md - （中文安装方法）
+https://github.com/crazygit/temp/blob/master/setup_opengrok.md - （中文安装方法）
 
 http://blog.csdn.net/weihan1314/article/details/8944291 - （中文安装方法）
 
