@@ -5,7 +5,7 @@
 2. 核心层：查询分析，优化，缓存，内置函数； 内建视图，存储过程，触发器
 3. 存储引擎层：数据的存储、提取
 
-<img src="http://kevins.pro/blog/mysql_optimization/mysql_optimization_com.jpg" />
+<img src="http://kevins.pro/blog/mysql_optimization/mysql_optimization_com.jpg" width="100%"/>
 
 遇到问题后针对相应模块进行优化
 
@@ -16,7 +16,7 @@
 + Percona Server：新特性多
 + MariaDB：国内用的不多
 
-### 三配置文件详解
+### 三. 配置文件详解
 	/etc/my.cof
 1. `max_connections` MySql所允许的的同时会话数 `Error: Too many connections`
 2. `max_connect_errors` 最大错误（连接类）允许数，会引发`FLUSH HOSTS`重启服务
@@ -40,7 +40,7 @@
 
 总结：`buffur_size`大了，可以提高性能，但是占用相应的内存。多实践。
 
-### 四.软件优化
+### 四. 软件优化
 1. 选择合适的引擎
 + MyISAM 索引顺序访问方法，支持全文索引，非事务安全，不支持外键，会加表级锁
 
@@ -75,7 +75,7 @@
 + 过多的返回结果，会增大服务器返回给APP端的数据传输量。例：`网络传输速度面，弱网络环境下，容易造成请求失效`
 
 4. 字段尽量设置为NOT NULL
-```json
+```
 "" 和 NULL
 
 {"name":"myf"} {"name":""} {"hobby":空array}
