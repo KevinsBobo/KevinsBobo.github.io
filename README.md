@@ -14,6 +14,7 @@
 ## *分类目录* [*\[查看时间目录\]*](#时间目录-查看分类目录)
 ---
 ### 偷懒必须先勤快
+#### [记录一次OpenGrok安装的心酸历程](http://kevins.pro/blog/recording_opengrok_install/)
 #### [书籍库](http://github.com/KevinsBobo/books/) - *GitHub*
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)
 #### [Git,Vim,Shell,Gcc,Gdb常用命令及快捷键速查表](http://github.com/KevinsBobo/cheat-sheet/) - *GitHub*
