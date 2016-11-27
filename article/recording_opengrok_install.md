@@ -16,7 +16,7 @@
 
 没时间看我啰嗦的朋友我直接告诉重点吧：**安装 Latest release 版！**
 
-最终环境配置：Tomcat Version 7.0.73, JDK Oracl jdk 8, OS Ubuntu 16.04 amd64, Kernel 4.4.0-47
+最终环境配置：`Tomcat Version 7.0.73, JDK Oracl jdk 8, OS Ubuntu 16.04 amd64, Kernel 4.4.0-47`
 
 ## 安装过程参考：
 
