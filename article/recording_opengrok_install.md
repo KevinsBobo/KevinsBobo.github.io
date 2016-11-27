@@ -2,9 +2,9 @@
 
 > 欢迎转载，转载请注明出处！
 
-> Html版本: [my\_blog\_come\_to\_github](http://kevins.pro/blog/recording_opengrok_install/)
+> Html版本: [recording\_opengork\_install](http://kevins.pro/blog/recording_opengrok_install/)
 
-> MarkDown版本: [my\_blog\_come\_to\_github.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/recording_opengrok_install.md)
+> MarkDown版本: [recording\_opengork\_install.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/recording_opengrok_install.md)
 
 > [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)
 
