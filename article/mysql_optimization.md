@@ -76,7 +76,7 @@
 
 4. 字段尽量设置为NOT NULL
 ```
-"" 和 NULL
+\"\" 和 NULL
 
 {"name":"myf"} {"name":""} {"hobby":空array}
 
