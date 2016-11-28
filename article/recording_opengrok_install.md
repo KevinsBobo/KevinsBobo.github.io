@@ -36,7 +36,7 @@ http://blog.csdn.net/weihan1314/article/details/8944291 - （中文安装方法�
 
 ## 心酸经历：
 
-按照上面的指导下载opengrok-0.13-rc4（Pre-release版），安装好了openJDK-8，Tomcat7，并将OpenGrok中的/lib/source.war文件移到Tomcat的webapps目录下，然后执行启动，浏览器页面报错（当时的错误提升没有记录，不过这个提示不是关键）。
+按照上面的指导下载opengrok-0.13-rc4（Pre-release版），安装好了openJDK-8，Tomcat7，并将OpenGrok中的/lib/source.war文件移到Tomcat的webapps目录下，然后执行启动，浏览器页面报错（当时的错误提示没有记录，不过这个提示不是关键）。
 
 跟据提示的错误找到了Stack Overflow上的一个回答，说将JDK更换成Oracl的可能会好，于是尝试更换。
 
