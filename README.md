@@ -26,6 +26,7 @@
 ## *时间目录* [*\[查看分类目录\]*](#分类目录-查看时间目录)
 ---
 ### 2016年11月
+#### [记录一次OpenGrok安装的心酸历程](http://kevins.pro/blog/recording_opengrok_install/)
 #### [书籍库](http://github.com/KevinsBobo/books/) - *GitHub*
 ### 2016年10月
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)

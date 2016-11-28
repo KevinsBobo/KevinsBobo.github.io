@@ -53,8 +53,8 @@ $ sudo update-java-alternatives -s java-8-oracle
 然而并没有其他可用的错误提示，无奈只能硬着头皮往下进行。配置完`configuration.xml`地址并创建索引后，重新尝试，还是错误。不过这次错误日志提供了下一条有用的信息`'<>' operator is not allowed for source level below 1.7`，这个说这个项目是要用jdk-7运行的，可是官方安装手册中明确要求的环境要是jdk8呀！无奈找不到更多的信息，只能更换jdk
 
 ```bash
-sudo update-java-alternatives -s java-7-oracle
-sudo update-java-alternatives -s java-7-oracle
+$ sudo apt-get install oracle-java8-installer
+$ sudo update-java-alternatives -s java-7-oracle
 ```
 
 在安装jdk-7的时候由于GreatWall的原因，下载速度极慢，于是从Oracle官网手动下载jdk包放入`/var/cache/orcale-jdk7-installer/`文件夹下，顺利完成安装。
