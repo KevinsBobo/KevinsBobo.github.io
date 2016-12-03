@@ -10,6 +10,11 @@
 
 ---
 
+## 2016年12月03日
++ 练习了《C++ Primer》练习册第七章 - [Code](http://github.com/KevinsBobo/book_code/blob/master/cpp_primer/07_class)
+
+---
+
 ## 2016年12月02日
 + 继续学习C++
 
