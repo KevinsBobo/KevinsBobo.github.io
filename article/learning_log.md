@@ -10,6 +10,12 @@
 
 ---
 
+## 2016年12月04日
++ 学习了《算法笔记》第六章 - set
++ 练习了《算法笔记》第六章 - vector - [Code](http://github.com/KevinsBobo/book_code/blob/master/algorithm_note/06_stl_01_vector.cpp)
+
+---
+
 ## 2016年12月03日
 + 练习了《C++ Primer》练习册第七章 - [Code](http://github.com/KevinsBobo/book_code/blob/master/cpp_primer/07_class)
 
