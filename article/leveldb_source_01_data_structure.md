@@ -2,16 +2,16 @@
 
 > 欢迎转载，转载请注明出处！
 
-> Html版本: [levedb\_source\_01\_data\_structure](http://kevins.pro/blog/levedb_source_01_data_structure/)<br/>
-> MarkDown版本: [levedb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/levedb_source_01_data_structure.md)
+> Html版本: [leveldb\_source\_01\_data\_structure](http://kevins.pro/blog/leveldb_source_01_data_structure/)<br/>
+> MarkDown版本: [leveldb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/leveldb_source_01_data_structure.md)
 
 > [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)
 
 ---
 
 ## 目录
-+ [0x01\_stdint.h - 基本数据类型别名](#0x01_stdint)
-+ [0x02\_coding.h - 字节序及存储方法](#0x02_coding)
++ [0x01\_stdint.h - 基本数据类型别名](#0x01_stdinth)
++ [0x02\_coding.h - 字节序及存储方法](#0x02_codingh)
 
 ---
 <span id="0x01_stdinth"></span>
