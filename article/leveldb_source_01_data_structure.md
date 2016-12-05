@@ -68,7 +68,9 @@ extern bool GetLengthPrefixedSlice(Slice* input, Slice* result);
 // 返回该数据后面的指针
 // 否则调用GetVarint32PtrFallback函数将所有数据存放至v(value)指向的空间
 // 返回该数据后面的指针
-extern const char* GetVarint32Ptr(const char* p,const char* limit, uint32_t* v);
+extern const char* GetVarint32Ptr(const char* p,
+                                  const char* limit,
+                                  uint32_t* v);
 
 // GetVarint32PtrFallback函数是完整版的GetVarint32Ptr函数，并且包含后者的功能
 // 通过for循环和移位的方式依次将指针p指向的数据从低位开始存放至value中，
@@ -88,7 +90,8 @@ extern int VarintLength(uint64_t v);
 
 /*varint数据存储实现开始*/
 // 依次将value按字节从低位到高位存储至dst字符数组的低位到高位（下标实现）
-// 如果定义了kLittleEndian的值为ture，则直接按照相反的方式（大端序）进行字节拷贝操作
+// 如果定义了kLittleEndian的值为ture，
+// 则直接按照相反的方式（大端序）进行字节拷贝操作
 extern void EncodeFixed32(char* dst, uint32_t value);
 
 // 与void同名函数操作相同，是按照指针的方式实现的，并返回操作完成后指针所在的位置
