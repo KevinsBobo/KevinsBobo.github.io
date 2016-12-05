@@ -12,6 +12,9 @@
 <span id="分类目录-查看时间目录"></span>
 ## *分类目录* [*\[查看时间目录\]*](#时间目录-查看分类目录)
 ---
+### LevelDB源码阅读笔记
+#### [0x00\_概述](http://keins.pro/blog/leveldb_source_00_overview/)
+#### [0x01\_数据结构](http://keins.pro/blog/leveldb_source_01_data_structure/)
 ### 偷懒必须先勤快
 #### [记录一次OpenGrok安装的心酸历程](http://kevins.pro/blog/recording_opengrok_install/)
 #### [书籍库](http://github.com/KevinsBobo/books/) - *GitHub*
@@ -24,6 +27,9 @@
 <span id="时间目录-查看分类目录"></span>
 ## *时间目录* [*\[查看分类目录\]*](#分类目录-查看时间目录)
 ---
+### 2016年12月
+#### [0x01\_数据结构\_LevelDB源码阅读](http://keins.pro/blog/leveldb_source_01_data_structure/)
+#### [0x00\_概述\_LevelDB源码阅读](http://keins.pro/blog/leveldb_source_00_overview/)
 ### 2016年11月
 #### [记录一次OpenGrok安装的心酸历程](http://kevins.pro/blog/recording_opengrok_install/)
 #### [书籍库](http://github.com/KevinsBobo/books/) - *GitHub*
