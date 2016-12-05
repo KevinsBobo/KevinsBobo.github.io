@@ -1,11 +1,10 @@
 # GitHub博客
-> 博客搭建在GitHub上，采用静态页面+动态md文件方式。
-> 通过Marked结合官方主题的方式实现了动态编译，若有兴趣可以阅读[此篇文章](http://kevins.pro/blog/my_blog_come_to_github/)。
+> 博客搭建在GitHub上，采用静态页面+动态编译md文件的方式实现。<br/>
+> 通过MarkedJs结合官方主题的方式实现了动态编译，若有兴趣可以阅读[此篇文章](http://kevins.pro/blog/my_blog_come_to_github/)。
 
 > 不支持评论功能，欢迎通过邮件与我交流。
 
-> Html版本：[index.html](http://kevins.pro)
-
+> Html版本：[index.html](http://kevins.pro)<br/>
 > MarkDown版本：[README.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/README.md)
 
 > [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)

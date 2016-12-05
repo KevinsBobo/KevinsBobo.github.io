@@ -2,8 +2,7 @@
 
 > 未经许可，不得转载。
 
-> Html版本：[learning\_log](http://kevins.pro/blog/learning_log/)
-
+> Html版本：[learning\_log](http://kevins.pro/blog/learning_log/)<br/>
 > MarkDown版本：[learning\_log.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/learning_log.md)
 
 > [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)

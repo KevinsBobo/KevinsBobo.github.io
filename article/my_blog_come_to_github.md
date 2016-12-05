@@ -2,8 +2,7 @@
 
 > 欢迎转载，转载请注明出处！
 
-> Html版本: [my\_blog\_come\_to\_github](http://kevins.pro/blog/my_blog_come_to_github/)
-
+> Html版本: [my\_blog\_come\_to\_github](http://kevins.pro/blog/my_blog_come_to_github/)<br/>
 > MarkDown版本: [my\_blog\_come\_to\_github.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/my_blog_come_to_github.md)
 
 > [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)
