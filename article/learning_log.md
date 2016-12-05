@@ -9,6 +9,12 @@
 
 ---
 
+## 2016年12月05日
++ 开始阅读LevelDB源码 - [总结](http://kevins.pro/blog/leveldb_source_01_data_structure/)
++ 在阅读过程中使用OpenGrok辅助，但是发现很多时候需要使用VIM，但是在VIM插件不多的情况下有些力不从心，于是继续丰富VIM功能，把VIM打造成了一个强大的IDE - [参考](https://github.com/yangyangwithgnu/use_vim_as_ide/blob/master/README.md)
+
+---
+
 ## 2016年12月04日
 + 学习了《算法笔记》第六章
 + 练习了《算法笔记》第六章 - vector - [Code](http://github.com/KevinsBobo/book_code/blob/master/algorithm_note/06_stl_01_vector.cpp)
