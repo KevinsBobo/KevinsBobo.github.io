@@ -14,7 +14,7 @@
 + [0x02\_coding.h - 字节序及存储方法](#0x02_coding)
 
 ---
-<span id="0x01_stdint"></span>
+<span id="0x01_stdinth"></span>
 ## 0x01\_stdint.h
 > 设置了基本数据类型别名
 
@@ -30,7 +30,7 @@ typedef unsigned int          uint32_t;
 typedef unsigned long long    uint64_t;
 ```
 
-<span id="0x02_coding"></span>
+<span id="0x02_codingh"></span>
 ## 0x02\_coding.h
 > 定义了数字存储的方式-`little-endian`-小端序，和存储方法-`varint`-数值压缩存储
 
