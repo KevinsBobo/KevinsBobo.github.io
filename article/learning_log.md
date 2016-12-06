@@ -5,7 +5,14 @@
 > Html版本：[learning\_log](http://kevins.pro/blog/learning_log/)<br/>
 > MarkDown版本：[learning\_log.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/learning_log.md)
 
-> [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)
+> [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
+
+---
+
+## 2016年12月06日
++ 进行了LevelDB的文档翻译工作，完成了2/5 - [文档翻译](http://kevins.pro/blog/leveldb_chinese_doc/)
++ 在翻译过程中简单了解了数据库快照的基本理论 - [Link](https://msdn.microsoft.com/zh-cn/library/ms175158.aspx)
++ 进行了LevelDB的注释工作，注释了`util/coding.h`
 
 ---
 
