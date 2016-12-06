@@ -141,3 +141,135 @@ db->ReleaseSnapshot(options.snapshot);
 注意：当一个快照长期不用时，应该通过`DB::ReleaseSnapshot`接口释放它。这样既可以让底层实现丢弃那些为支持该快照的读取操作而进行维护的一些状态数据。
 
 ## Slice - LevelDB使用的数据结构
+
+前面遇到的`it->key()`和`it->value()`调用的返回值就是`leveldb::Slice`类型的实例。`Slice`是一个简单的结构，它包含了一个`length`和一个指向外部字节数组的指针。返回`Slice`类型要比返回`std::string`类型的开销小得多，因为这样我们就不需要对那些比较大的键值进行拷贝了。此外，`leveldb`方法不返回以`nul`结尾的C风格字符串，因为`leveldb`的键和值允许包含`\0`字符。
+
+C++字符串和C风格字符串能够很容易的转换为`Slice`类型：
+```cpp
+leveldb::Slice s1 = "hello";
+
+std::string str("world");
+leveldb::Slice s2 = str;
+```
+
+一个`Slice`类型也很容易的就能转换回C++字符串：
+```cpp
+std::string str = s1.ToString();
+assert(str == std::string("hello"));
+```
+
+在使用`Slice`类型时要格外小心，因为它依赖调用者来保证`Slice`指向的外部字符数组有效。比如下面这个例子就是有问题的：
+```cpp
+leveldb::Slice slice;
+if (...) {
+  std::string str = ...;
+  slice = str;
+}
+Use(slice);
+```
+
+因为`if`语句块是有作用域的，所以当`if`语句执行完后`str`将会被析构，此时`slice`指向的空间就不存在了。
+
+## 比较器
+
+前面的例子使用了按照字典序的默认排序函数对`key`进行排序。然而，你也可以在打开一个数据库时为其提供一个自定义的比较器。例如，假设数据库的每个`key`由两个数字著称，我们应该先按照第一个数字排序，如果相等再按照第二个数字进行排序。首先，定义一个满足如下规则的`leveldb::Conmparator`的子类：
+
+```cpp
+class TwoPartComparator : public leveldb::Comparator {
+ public:
+  // Three-way comparison function:
+  //   if a < b: negative result
+  //   if a > b: positive result
+  //   else: zero result
+  int Compare(const leveldb::Slice& a, const leveldb::Slice& b) const {
+    int a1, a2, b1, b2;
+    ParseKey(a, &a1, &a2);
+    ParseKey(b, &b1, &b2);
+    if (a1 < b1) return -1;
+    if (a1 > b1) return +1;
+    if (a2 < b2) return -1;
+    if (a2 > b2) return +1;
+    return 0;
+  }
+
+  // Ignore the following methods for now:
+  const char* Name() const { return "TwoPartComparator"; }
+  void FindShortestSeparator(std::string*, const leveldb::Slice&) const { }
+  void FindShortSuccessor(std::string*) const { }
+};
+```
+
+现在使用这个自定义的比较器创建数据库：
+```cpp
+TwoPartComparator cmp;
+leveldb::DB* db;
+leveldb::Options options;
+options.create_if_missing = true;
+options.comparator = &cmp;
+leveldb::Status status = leveldb::DB::Open(options, "/tmp/testdb", &db);
+...
+```
+
+#### 向后兼容性
+
+比较器的`Name`方法的返回值将会在数据库创建时与之绑定，并且在以后每次打开数据库的时候进行检查。如果`name`发生变化，那么`leveldb::DB::Open`将会调用失败。因此，只有在新的`key`格式及比较函数和现在的数据库不兼容时才需要修改`name`，同时所有现有的数据库数据将会被丢弃。
+
+当然，你也可以通过预先的计划来逐步改变你的`key`格式。例如，你可以在每个`key`的末尾存储一个版本号（一个字节的应该可以满足大多数用途）。当希望使用一种新的`key`格式时（比如，给`TwoPartComparator`增加一个可选的第三块内容），(a) 保持 `comparator`的`name`不变，(b) 给新的`key`增加版本号，(c) 改变比较器函数，使得它可以通过`key`里的版本号来决定如何解释它们。
+
+## 性能
+
+可以通过修改定义在`include/leveldb/options.h`中的默认值值来对性能进行调整和优化。
+
+#### Block size
+
+`leveldb`将相邻的`key`组合在一块儿放进同一个`block`中，这样的一个`block`是与持久化存储设备进行传输的基本单元。默认的`block`大小约为`4096`个未压缩字节。那些经常需要扫描整个数据库内容的应用可能希望增加这个值的大小。对于小的`value`值进行大量的单点读取的应用，想要改进性能的话可以尝试将这个值减小。在这个值小于1千字节或大于几兆字节并没有太多的好处。还要注意，压缩对于那些比较大的`block`更有效一些。
+
+#### Compression
+
+每个`block`在被写入持久化存储器之前都会被单独压缩。由于默认的压缩方法速度非常快，并且对不可压缩的数据禁用压缩，因此压缩默认的状态是打开的。只有在极少数的情况下，应用才会完全关闭压缩，但只有在通过`benchmarks`能看到性能提升时才应该这样做：
+```cpp
+leveldb::Options options;
+options.compression = leveldb::kNoCompression;
+... leveldb::DB::Open(options, name, ...) ....
+```
+
+#### Cache
+
+数据库的内容存储在文件系统的一组文件中，并且每个文件存储的都是一系列压缩过的`blocks`。如果`options.cache`的值时`non-NULL`的，那么那些用过的未被压缩的`block`的内容将被存储在缓存中。
+```cpp
+#include "leveldb/cache.h"
+
+leveldb::Options options;
+options.cache = leveldb::NewLRUCache(100 * 1048576);  // 100MB cache
+leveldb::DB* db;
+leveldb::DB::Open(options, name, &db);
+... use the db ...
+delete db
+delete options.cache;
+```
+
+注意，缓存里存放的时未压缩的数据，因此它的大小是应用层面的数据大小，而不是压缩后的。（压缩过的`block`是交给操作系统缓冲区去缓存的，或是由客户端提供的自定义的`Env`实现来完成的）。
+
+当执行大批量读取操作时，应用程序可能会希望禁用高速缓存，从而不会由于大批量的数据读取操作而消耗大量的缓存。一个针对迭代器的`option`参数可以实现这个目的：
+```cpp
+leveldb::ReadOptions options;
+options.fill_cache = false;
+leveldb::Iterator* it = db->NewIterator(options);
+for (it->SeekToFirst(); it->Valid(); it->Next()) {
+  ...
+}
+```
+
+#### Key Layout
+
+需要注意硬盘的传输和缓存的单位时一个`block`。相邻的`key`（跟据数据库的排序顺序）通常放置在同一个块中。因此，应用可以通过将相邻的`key`放置在一起进行访问、将不经常使用的`key`放置在单独的`key值`空间内的方法来提高性能。
+
+例如，假设我们在`leveldb`上实现一个简单的文件系统。我们通常需要存储的数据应该是：
+```cpp
+filename -> permission-bits, length, list of file_block_ids
+file_block_id -> data
+```
+
+我们可以为`filename`添加个前缀（比如'/'），为`file_block_id`添加个前缀（比如'0'），这样在扫描文件元数据时就不需要去获取和缓存大量的文件内容。
+
+#### Filters
