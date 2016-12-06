@@ -10,7 +10,7 @@
 ---
 
 ## 2016年12月06日
-+ 进行了LevelDB的文档翻译工作，完成了2/5 - [文档翻译](http://kevins.pro/blog/leveldb_chinese_doc/)
++ 进行了LevelDB的文档翻译工作，完成了3/4 - [文档翻译](http://kevins.pro/blog/leveldb_chinese_doc/)
 + 在翻译过程中简单了解了数据库快照的基本理论 - [Link](https://msdn.microsoft.com/zh-cn/library/ms175158.aspx)
 + 进行了LevelDB的注释工作，注释了`util/coding.h`
 
