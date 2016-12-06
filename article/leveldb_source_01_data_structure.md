@@ -5,7 +5,7 @@
 > Html版本: [leveldb\_source\_01\_data\_structure](http://kevins.pro/blog/leveldb_source_01_data_structure/)<br/>
 > MarkDown版本: [leveldb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/leveldb_source_01_data_structure.md)
 
-> [Follow me on GitHub ^_^](http://github.com/KevinsBobo/)
+> [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
 
 ---
 
@@ -54,10 +54,10 @@ extern void PutLengthPrefixedSlice(std::string* dst, const Slice& value);
 /* 获取函数开始 */
 // 通过GetVarint32Ptr函数在Slice对象中获取数据原始数值，将其赋给value
 // 获取到返回ture并创建新的Slice对象赋给input新对象的地址，否则返回false
-// 暂时不明白为什么要创建新对象并将地址赋给input，
-// 因为这样函数执行结束后input将成为野指针。而且创建的新对象的
-// 第一个参数是原对象字符串数据最后一位字符的后一个指针，
-// 第二个参数最终应该为0，所以创建的对象也没有意义
+// * 暂时不明白为什么要创建新对象并将地址赋给input，因为创建的新对象的
+// * 第一个参数是原对象字符串数据最后一位字符的后一个指针，
+// * 第二个参数最终应该为0，所以创建的对象也没有意义
+// + 注释中解释是将Slice对象的指针向后移动
 extern bool GetVarint32(Slice* input, uint32_t* value);
 
 // 将input中的data()的内容和其原始数值作为data和size创建新的对象，
@@ -68,7 +68,7 @@ extern bool GetLengthPrefixedSlice(Slice* input, Slice* result);
 // 返回该数据后面的指针
 // 否则调用GetVarint32PtrFallback函数将所有数据存放至v(value)指向的空间
 // 返回该数据后面的指针
-extern const char* GetVarint32Ptr(const char* p,
+inline const char* GetVarint32Ptr(const char* p,
                                   const char* limit,
                                   uint32_t* v);
 
