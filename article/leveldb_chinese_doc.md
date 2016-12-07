@@ -57,7 +57,7 @@ if (s.ok()) s = db->Put(leveldb::WriteOptions(), key2, value);
 if (s.ok()) s = db->Delete(leveldb::WriteOptions(), key1);
 ```
 
-## 原子更新 - [Atomic Updates](https://en.wikipedia.org/wiki/Atomicity_(database_systems))
+## 原子更新 - [Atomic Updates](https://en.wikipedia.org/wiki/Atomicity_(database_systems)
 
 注意：上面的操作如果进程在`Put key2`和`Delete key1`两个操作之间结束，那么这两个键将存储相同的值。因此，尽可能使用`WriteBatch`类来避免这类问题：
 ```cpp
