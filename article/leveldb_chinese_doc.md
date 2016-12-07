@@ -1,15 +1,13 @@
 # LevelDB中文文档
 
-> 欢迎转载，转载请注明出处！
-
-> Html版本: [leveldb\_chinese\_doc](http://kevins.pro/blog/leveldb_chinese_doc/)<br/>
-> MarkDown版本: [leveldb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/leveldb_chinese_doc.md)
-
+> 欢迎转载，转载请注明出处！<br><br>
+> Html版本: [leveldb\_chinese\_doc](http://kevins.pro/blog/leveldb_chinese_doc/)<br>
+> MarkDown版本: [leveldb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/leveldb_chinese_doc.md)<br><br>
 > [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
 
 LevelDB提供一个持久的键值存储库。keys 和 values 都可以是任意的字节数组。key是通过用户提供的比较器函数在键值存储器内进行排序的。
 
-## 创建并打开一个数据库
+## 创建并打开一个数据库 - Opening A Database
 
 一个LevelDB数据库有一个名字并且对应一个文件系统的文件夹。所有的数据库内容都存储在这个文件夹下。在下面的例子中展示了怎样创建并打开一个数据库：
 ```cpp
@@ -37,7 +35,7 @@ leveldb::Status s = ...;
 if (!s.ok()) cerr << s.ToString() << endl;
 ```
 
-## 关闭一个数据库
+## 关闭一个数据库 Closing A Database
 
 当你完成数据库相关操作后，只用删除这个数据库对象就可以了。例：
 ```cpp
@@ -46,7 +44,7 @@ if (!s.ok()) cerr << s.ToString() << endl;
 delete db;
 ```
 
-## 读写操作
+## 读写操作 - Reads And Writes
 
 数据库提供`Put, Delete, Get`这些方法来修改和查询数据库。比如，以下操作时将存储在`key1`的值移动到`key2`中去：
 ```cpp
@@ -76,7 +74,7 @@ if (s.ok()) {
 
 `WriteBatch`类除了原子性的优势外，也可以用于通过将大量个体变动放置在同一批次中而加速批量更新。
 
-## 同步写入
+## 同步写入 - Synchronous Writes
 
 在默认情况下，`levedb`中的每一次写操作都是异步的：它会在把写入操作从进程中推送到操作系统后返回，而从操作系统内存到底层持久化存储的传输是异步的。对于特定的写操作，是可以打开同步`sync`标志使写操作一直到数据被传输到底层存储器后再返回。（在基于Posix标准的操作系统系统中，这一步是通过在写操作返回之前调用`fsync(...)`或`fdatasync(...)`或`nsync(..., MS_SYNC)`实现的。）
 ```cpp
@@ -91,11 +89,11 @@ db->Put(write_options, ...);
 
 `WriteBatch`提供一个代替异步写操作的选择：将多个更新操作放置在同一个`WriteBatch`对象中然后使用同步写入一起应用（`write_options.sync`设置为`ture`）；这时同步写入的额外成本开销将在这批次中所有的写入操作中摊销。
 
-## 并发
+## 并发 - Concurrency
 
 一个数据库在同一时间内只能由一个进程打开，`leveldb`通过从操作系统中获取锁的方式防止误用。在单个进程中，同一个`leveldb::DB`对象可以安全的由多个并发线程共享使用。即，不同的线程可以同时写入或获取迭代器，或在没有任何外部同步的情况在同一数据库上调用`Get`（`leveldb`的实现过程中将自动自行所需的同步）。但是其他对象（如`Iterator`和`WriteBatch`）可能需要外部同步。如果两个线程共享这样的对象，它们必须使用自己的协议锁来保护自己的访问。更多详细的细节在公共的头文件中描述。
 
-## 迭代
+## 迭代 - Iteration
 
 下面的例子演示了如何从数据库中成对的打印键值：
 ```cpp
@@ -170,7 +168,7 @@ Use(slice);
 
 因为`if`语句块是有作用域的，所以当`if`语句执行完后`str`将会被析构，此时`slice`指向的空间就不存在了。
 
-## 比较器
+## 比较器 - Comparators
 
 前面的例子使用了按照字典序的默认排序函数对`key`进行排序。然而，你也可以在打开一个数据库时为其提供一个自定义的比较器。例如，假设数据库的每个`key`由两个数字著称，我们应该先按照第一个数字排序，如果相等再按照第二个数字进行排序。首先，定义一个满足如下规则的`leveldb::Conmparator`的子类：
 
@@ -210,21 +208,21 @@ leveldb::Status status = leveldb::DB::Open(options, "/tmp/testdb", &db);
 ...
 ```
 
-#### 向后兼容性
+#### 向后兼容性 - Backwards compatibility
 
 比较器的`Name`方法的返回值将会在数据库创建时与之绑定，并且在以后每次打开数据库的时候进行检查。如果`name`发生变化，那么`leveldb::DB::Open`将会调用失败。因此，只有在新的`key`格式及比较函数和现在的数据库不兼容时才需要修改`name`，同时所有现有的数据库数据将会被丢弃。
 
 当然，你也可以通过预先的计划来逐步改变你的`key`格式。例如，你可以在每个`key`的末尾存储一个版本号（一个字节的应该可以满足大多数用途）。当希望使用一种新的`key`格式时（比如，给`TwoPartComparator`增加一个可选的第三块内容），(a) 保持 `comparator`的`name`不变，(b) 给新的`key`增加版本号，(c) 改变比较器函数，使得它可以通过`key`里的版本号来决定如何解释它们。
 
-## 性能
+## 性能 - Performance
 
 可以通过修改定义在`include/leveldb/options.h`中的默认值值来对性能进行调整和优化。
 
-#### Block size
+#### Block size - 块大小
 
 `leveldb`将相邻的`key`组合在一块儿放进同一个`block`中，这样的一个`block`是与持久化存储设备进行传输的基本单元。默认的`block`大小约为`4096`个未压缩字节。那些经常需要扫描整个数据库内容的应用可能希望增加这个值的大小。对于小的`value`值进行大量的单点读取的应用，想要改进性能的话可以尝试将这个值减小。在这个值小于1千字节或大于几兆字节并没有太多的好处。还要注意，压缩对于那些比较大的`block`更有效一些。
 
-#### Compression
+#### Compression - 压缩
 
 每个`block`在被写入持久化存储器之前都会被单独压缩。由于默认的压缩方法速度非常快，并且对不可压缩的数据禁用压缩，因此压缩默认的状态是打开的。只有在极少数的情况下，应用才会完全关闭压缩，但只有在通过`benchmarks`能看到性能提升时才应该这样做：
 ```cpp
@@ -233,7 +231,7 @@ options.compression = leveldb::kNoCompression;
 ... leveldb::DB::Open(options, name, ...) ....
 ```
 
-#### Cache
+#### Cache - 缓存
 
 数据库的内容存储在文件系统的一组文件中，并且每个文件存储的都是一系列压缩过的`blocks`。如果`options.cache`的值时`non-NULL`的，那么那些用过的未被压缩的`block`的内容将被存储在缓存中。
 ```cpp
@@ -260,7 +258,7 @@ for (it->SeekToFirst(); it->Valid(); it->Next()) {
 }
 ```
 
-#### Key Layout
+#### Key Layout - 键的布局方式
 
 需要注意硬盘的传输和缓存的单位时一个`block`。相邻的`key`（跟据数据库的排序顺序）通常放置在同一个块中。因此，应用可以通过将相邻的`key`放置在一起进行访问、将不经常使用的`key`放置在单独的`key值`空间内的方法来提高性能。
 
@@ -272,4 +270,94 @@ file_block_id -> data
 
 我们可以为`filename`添加个前缀（比如'/'），为`file_block_id`添加个前缀（比如'0'），这样在扫描文件元数据时就不需要去获取和缓存大量的文件内容。
 
-#### Filters
+#### Filters - 过滤器
+
+由于`leveldb`的数据是按组存放在硬盘上的，所以一个`Get()`调用可能需要在硬盘上执行多次读取操作。可选的`FilterPolicy`机制可以显著的减少磁盘的读取操作量。
+```cpp
+leveldb::Options options;
+options.filter_policy = NewBloomFilterPolicy(10);
+leveldb::DB* db;
+leveldb::DB::Open(options, "/tmp/testdb", &db);
+... use the database ...
+delete db;
+delete options.filter_policy;
+```
+
+上面的代码将基于[Bloom Filter](https://zh.wikipedia.org/wiki/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8)的过滤策略与数据库相关联。基于`Bloom Filter`的过滤依赖于在内存中每个`key`中保存一定量数据位（在上面的例子中`NewBloomFilterPolicy`
+的参数是10，说明每个`key`中增加的数据位是10位）。此过滤器将调用`Get()`时所需的不必要的磁盘读取操作数量减少了大约100倍。增加每个`key`的数据位能过更多的减少硬盘的读取操作数，但是要以更多的内存开销为代价。因此我们建议那些数据不适合在内存中存放的应用和需要做很多随机读取操作的应用设置过滤器策略。
+
+如果你使用的是自定义的比较器，那么应该确保你使用的过滤器策略和自定义比较器相兼容。例如，在一个比较器中比较`key`时忽略其尾部的空格，那么`NewBloomFilterPolicy`就不能和这样的比较器兼容。相应的，应用也可以提供一个忽略`key`尾部空格的自定义过滤器策略。例如：
+
+```cpp
+class CustomFilterPolicy : public leveldb::FilterPolicy {
+ private:
+  FilterPolicy* builtin_policy_;
+ public:
+  CustomFilterPolicy() : builtin_policy_(NewBloomFilterPolicy(10)) { }
+  ~CustomFilterPolicy() { delete builtin_policy_; }
+
+  const char* Name() const { return "IgnoreTrailingSpacesFilter"; }
+
+  void CreateFilter(const Slice* keys, int n, std::string* dst) const {
+    // Use builtin bloom filter code after removing trailing spaces
+    std::vector<Slice> trimmed(n);
+    for (int i = 0; i < n; i++) {
+      trimmed[i] = RemoveTrailingSpaces(keys[i]);
+    }
+    return builtin_policy_->CreateFilter(&trimmed[i], n, dst);
+  }
+
+  bool KeyMayMatch(const Slice& key, const Slice& filter) const {
+    // Use builtin bloom filter code after removing trailing spaces
+    return builtin_policy_->KeyMayMatch(RemoveTrailingSpaces(key), filter);
+  }
+};
+```
+
+更高级的应用可以使用一系列其他的用于概括一组`key`的机制的过滤策略而不使用`bloom filter`过滤策略。更多的细节参见`leveldb/filter_policy.h`。
+
+## 校验和 - Checksums
+
+`leveldb`会为所有存储在文件系统中的数据生成`checksums`。提供了两个参数来控制进行什么程度的`checksums`验证：
+
++ `ReadOptions::verify_checksums`，这个参数设置为`ture`代表了对从文件系统读取的所有数据进行强制的`checksum`验证。但默认情况下不会进行这样的强制验证。
++ `Options::paranoid_checks`，这个参数可以在打开数据库之前设置为`ture`，这会在打开数据库时只要检测到内部损坏的话引发错误。错误产生的时机取决与数据库出现问题的部分，可能在打开数据库时引发或者在后面执行到某些数据库操作时引发。在默认情况下是不执行检查的，即使数据库的持久化存储器某些部分出现问题也可以继续使用数据库。<br>
+如果数据库坏了（也许是因为设置了`paranoid_checks`导致数据库无法打开），`leveldb::RepairDB`函数可以用来恢复尽可能多的数据。
+
+## 近似大小 - Approximate Size
+
+`GetApproximateSizes`方法可以用于获取一个或多个`key range`占用的文件系统空间的近似大小：
+```cpp
+leveldb::Range ranges[2];
+ranges[0] = leveldb::Range("a", "c");
+ranges[1] = leveldb::Range("x", "z");
+uint64_t sizes[2];
+leveldb::Status s = db->GetApproximateSizes(ranges, 2, sizes);
+```
+
+上面的调用中会将`size[0]`设置为`[a, c)`范围内`key`占用的近似大小，而将`size[1]`设置为`[x, z)`范围内`key`占用的近似大小。
+
+## 环境 - Environment
+
+由`leveldb`执行的所有文件操作（和其他操作系统的调用操作）都通过`leveldb::Env`对象统一管理。高级的客户端可以自己提供`Env`来实现更好的控制。例如，应用可以在文件IO中引入人为的延迟来限制`leveldb`对系统中其他活动的影响：
+```cpp
+  class SlowEnv : public leveldb::Env {
+    .. implementation of the Env interface ...
+  };
+
+  SlowEnv env;
+  leveldb::Options options;
+  options.env = &env;
+  Status s = leveldb::DB::Open(options, ...);
+```
+
+## 移植 - Porting
+
+`leveldb`通过提供`leveldb/prot/port.h`中的`types/methods/functions`的平台描述来实现将其移植到新的平台上。具体细节可以参考`leveldb/prot/port_example.h`
+
+## 其他信息 - Other Information
+
+关于`leveldb`的更多实现信息可以参考下面的文档
++ [Implementation notes](https://rawgit.com/google/leveldb/master/doc/impl.html)
++ [Format of an immutable Table file](https://rawgit.com/google/leveldb/master/doc/table_format.txt)
++ [Format of a log file](https://rawgit.com/google/leveldb/master/doc/log_format.txt)

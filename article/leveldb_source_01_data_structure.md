@@ -1,10 +1,8 @@
 # 0x01-数据结构-LevelDB源码阅读
 
-> 欢迎转载，转载请注明出处！
-
-> Html版本: [leveldb\_source\_01\_data\_structure](http://kevins.pro/blog/leveldb_source_01_data_structure/)<br/>
-> MarkDown版本: [leveldb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/leveldb_source_01_data_structure.md)
-
+> 欢迎转载，转载请注明出处！<br><br>
+> Html版本: [leveldb\_source\_01\_data\_structure](http://kevins.pro/blog/leveldb_source_01_data_structure/)<br>
+> MarkDown版本: [leveldb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/leveldb_source_01_data_structure.md)<br><br>
 > [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
 
 ---
