@@ -1,5 +1,8 @@
 # LevelDB中文文档
 
+> 作者：Jeff Dean, Sanjay Ghemawat<br>
+> 原文：https://rawgit.com/google/leveldb/master/doc/index.html<br>
+> 译者：[KevinsBobo](http://kevins.pro)<br><br>
 > 欢迎转载，转载请注明出处！<br><br>
 > Html版本: [leveldb\_chinese\_doc](http://kevins.pro/blog/leveldb_chinese_doc/)<br>
 > MarkDown版本: [leveldb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/leveldb_chinese_doc.md)<br><br>
@@ -359,5 +362,6 @@ leveldb::Status s = db->GetApproximateSizes(ranges, 2, sizes);
 
 关于`leveldb`的更多实现信息可以参考下面的文档
 + [Implementation notes](https://rawgit.com/google/leveldb/master/doc/impl.html)
++ [LevelDB实现(译)](http://duanple.blog.163.com/blog/static/70971767201171821616246/)
 + [Format of an immutable Table file](https://rawgit.com/google/leveldb/master/doc/table_format.txt)
 + [Format of a log file](https://rawgit.com/google/leveldb/master/doc/log_format.txt)
