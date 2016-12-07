@@ -103,8 +103,8 @@ extern char* EncodeVarint32(char* dst, uint32_t value);
 /*varint数据存储实现结束*/
 ```
 
-> 测试用例：[`util/coding_test.cc`](https://github.com/KevinsBobo/leveldb/blob/master/util/coding_test.cc)<br>
-> 更多内容细节和实现请参见[`util/coding.h`](https://github.com/KevinsBobo/leveldb/blob/master/util/coding.h)(中英文注释)和[`util/coding.cc`](https://github.com/KevinsBobo/leveldb/blob/master/util/coding.cc)
+> 测试用例：[util/coding\_test.cc](https://github.com/KevinsBobo/leveldb/blob/master/util/coding_test.cc)<br>
+> 更多内容细节和实现请参见[util/coding.h](https://github.com/KevinsBobo/leveldb/blob/master/util/coding.h)(中英文注释)和[util/coding.cc](https://github.com/KevinsBobo/leveldb/blob/master/util/coding.cc)
 
 <span id="0x03_sliceh"></span>
 ## 0x03\_slice.h
@@ -125,7 +125,7 @@ extern char* EncodeVarint32(char* dst, uint32_t value);
 + 能够很容易的和C++`string`类型相互转换
 + C风格字符串可以很容易的转换为`Slice`类型，但不能将`Slice`类型转换为C风格字符串。因为`Slice`类型的数据中允许包含`\0`
 
-> 更多细节和例子参见[`include/leveldb/slice.h`](https://github.com/KevinsBobo/leveldb/blob/master/include/leveldb/slice.h)(中英文注释)和[中文文档](http://kevins.pro/blog/leveldb_chinese_doc/)
+> 更多细节和例子参见[include/leveldb/slice.h](https://github.com/KevinsBobo/leveldb/blob/master/include/leveldb/slice.h)(中英文注释)和[中文文档](http://kevins.pro/blog/leveldb_chinese_doc/)
 
 <span id="0x04_statush"></span>
 ## 0x04\_status.h
@@ -159,7 +159,7 @@ enum Code {
 + 包含判断错误状态的方法
 + 包含返回可打印的`string`类型的方法
 
-> 更多细节和实现参见[`include/leveldb/status.h`](https://github.com/KevinsBobo/leveldb/blob/master/include/leveldb/status.h)(中英文注释)和[`util/status.cc`](https://github.com/KevinsBobo/leveldb/blob/master/util/status.cc)
+> 更多细节和实现参见[include/leveldb/status.h](https://github.com/KevinsBobo/leveldb/blob/master/include/leveldb/status.h)(中英文注释)和[util/status.cc](https://github.com/KevinsBobo/leveldb/blob/master/util/status.cc)
 
 <span id="0x05_arenah"></span>
 ## 0x05\_arena.h
