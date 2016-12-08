@@ -7,6 +7,11 @@
 
 ---
 
+## 2016年12月8日
++ 阅读了《编码：隐匿在计算机软硬件背后的语言》前13章
+
+---
+
 ## 2016年12月07日
 + 完成了LevelDB的文档翻译工作 - [文档翻译](http://kevins.pro/blog/leveldb_chinese_doc/)
 + 注释了LevelDB的`include/leveldb/slice.h & status.h`
