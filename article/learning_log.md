@@ -7,6 +7,11 @@
 
 ---
 
+## 2016年12月14日
++ 练习了《程序员代码面试指南》第一章第9节 - 最大值减去最小值小于或等于num的子数组数量 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_09_getChildrenArrNum.cpp)
+
+---
+
 ## 2016年12月13日
 + 练习了《程序员代码面试指南》第一章第8节 - 最大子矩阵 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_08_getMaxRecSize.cpp)
 + 看完了《编码：隐匿在计算机软硬件背后的语言》
