@@ -7,6 +7,12 @@
 
 ---
 
+## 2016年12月15日
++ 练习了《算法笔记》第四章第1节 - 排序<br>
+在练习题中采用了比书中更有效的方法 - [Code](http://github.com/KevinsBobo/book_code/blob/master/algorithm_note/04_initial_01_sort_exercises.cpp)
+
+---
+
 ## 2016年12月14日
 + 练习了《程序员代码面试指南》第一章第9节 - 最大值减去最小值小于或等于num的子数组数量 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_09_getChildrenArrNum.cpp)
 
