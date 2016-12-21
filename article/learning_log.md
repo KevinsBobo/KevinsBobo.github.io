@@ -7,6 +7,11 @@
 
 ---
 
+## 2016年12月21日
++ KMP算法
+
+---
+
 ## 2016年12月15日
 + 练习了《算法笔记》第四章第1节 - 排序<br>
 在练习题中采用了比书中更有效的方法 - [Code](http://github.com/KevinsBobo/book_code/blob/master/algorithm_note/04_initial_01_sort_exercises.cpp)
