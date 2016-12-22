@@ -8,7 +8,7 @@
 ---
 
 ## 2016年12月21日
-+ KMP算法
++ KMP算法 - [Code](http://github.com/KevinsBobo/book_code/blob/master/data_structure/05_string_kmp.cpp)
 
 ---
 
