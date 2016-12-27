@@ -17,6 +17,7 @@
 #### [记录一次OpenGrok安装的心酸历程](http://kevins.pro/blog/recording_opengrok_install/)
 #### [书籍库](http://github.com/KevinsBobo/books/) - *GitHub*
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)
+#### [Arduino打造USB蓝牙键盘扩展器](https://github.com/KevinsBobo/arduino_keyboard) - *GitHub*
 #### [Git,Vim,Shell,Gcc,Gdb常用命令及快捷键速查表](http://github.com/KevinsBobo/cheat-sheet/) - *GitHub*
 ### 学习日志
 #### [读书练习](http://github.com/KevinsBobo/book_code/) - *GitHub*
@@ -36,5 +37,7 @@
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)
 #### [读书练习](http://github.com/KevinsBobo/book_code/) - *GitHub*
 #### [学无止境](http://kevins.pro/blog/learning_log/)
+### 2016年7月
+#### [Arduino打造USB蓝牙键盘扩展器](https://github.com/KevinsBobo/arduino_keyboard) - *GitHub*
 ### 2016年4月
 #### [Git,Vim,Shell,Gcc,Gdb常用命令及快捷键速查表](http://github.com/KevinsBobo/cheat-sheet/) - *GitHub*
