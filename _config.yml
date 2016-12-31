@@ -4,9 +4,11 @@ google_analytics:
 show_downloads: false
 theme: jekyll-theme-cayman
 
-markdown: redcarpet
-redcarpet:
-    extensions: []
+markdown: kramdown
+kramdown:
+    input: GFM
+
+highligther: rouge
 
 gems:
   - jekyll-mentions
