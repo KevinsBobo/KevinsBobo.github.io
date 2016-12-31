@@ -1,8 +1,13 @@
 title: Kevins Bobo
 description: Just love coding and life!
-google_analytics: 
+google_analytics:
 show_downloads: false
 theme: jekyll-theme-cayman
+
+markdown: kramdown
+kramdown:
+    input: GFM
+    hard_wrap: false
 
 gems:
   - jekyll-mentions
