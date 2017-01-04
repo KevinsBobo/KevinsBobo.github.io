@@ -7,6 +7,9 @@ theme: jekyll-theme-cayman
 markdown: kramdown
 kramdown:
     input: GFM
+lsi: false
+excerpt_separator: "\n"
+incremental: false
 
 highligther: rouge
 
