@@ -13,6 +13,7 @@ LevelDB提供一个持久的键值存储库。keys 和 values 都可以是任意
 ## 创建并打开一个数据库 - Opening A Database
 
 一个LevelDB数据库有一个名字并且对应一个文件系统的文件夹。所有的数据库内容都存储在这个文件夹下。在下面的例子中展示了怎样创建并打开一个数据库：
+
 ```cpp
 #include <cassert>
 #include "leveldb/db.h"
@@ -26,6 +27,7 @@ assert(status.ok());
 ```
 
 如果想要在存在已创建数据库的情况下引发错误，则在`leveldb::DB::Open`前加上<br/>
+
 ```cpp
 options.error_if_exists = true;
 ```
@@ -33,6 +35,7 @@ options.error_if_exists = true;
 ## 状态 - Status
 
 你可能已经注意到了上面的`leveldb::Status`这个类型。在`leveldb`中可能遇到错误的函数大多都返回这个类型的值。你可以检查返回的结果是不是正确执行，并且可以打印相关联的错误信息：
+
 ```cpp
 leveldb::Status s = ...;
 if (!s.ok()) cerr << s.ToString() << endl;
@@ -41,6 +44,7 @@ if (!s.ok()) cerr << s.ToString() << endl;
 ## 关闭一个数据库 Closing A Database
 
 当你完成数据库相关操作后，只用删除这个数据库对象就可以了。例：
+
 ```cpp
 ... open the db as described above ...
 ... do something with db ...
@@ -50,6 +54,7 @@ delete db;
 ## 读写操作 - Reads And Writes
 
 数据库提供`Put, Delete, Get`这些方法来修改和查询数据库。比如，以下操作时将存储在`key1`的值移动到`key2`中去：
+
 ```cpp
 std::string value;
 leveldb::Status s = db->Get(leveldb::ReadOptions(), key1, &value);
@@ -60,6 +65,7 @@ if (s.ok()) s = db->Delete(leveldb::WriteOptions(), key1);
 ## 原子更新 - [Atomic Updates](https://en.wikipedia.org/wiki/Atomicity_(database_systems)
 
 注意：上面的操作如果进程在`Put key2`和`Delete key1`两个操作之间结束，那么这两个键将存储相同的值。因此，尽可能使用`WriteBatch`类来避免这类问题：
+
 ```cpp
 #include "leveldb/write_batch.h"
 ...
@@ -80,6 +86,7 @@ if (s.ok()) {
 ## 同步写入 - Synchronous Writes
 
 在默认情况下，`levedb`中的每一次写操作都是异步的：它会在把写入操作从进程中推送到操作系统后返回，而从操作系统内存到底层持久化存储的传输是异步的。对于特定的写操作，是可以打开同步`sync`标志使写操作一直到数据被传输到底层存储器后再返回。（在基于Posix标准的操作系统系统中，这一步是通过在写操作返回之前调用`fsync(...)`或`fdatasync(...)`或`nsync(..., MS_SYNC)`实现的。）
+
 ```cpp
 leveldb::WriteOptions write_options;
 write_options.sync = true;
@@ -99,6 +106,7 @@ db->Put(write_options, ...);
 ## 迭代 - Iteration
 
 下面的例子演示了如何从数据库中成对的打印键值：
+
 ```cpp
 leveldb::Iterator* it = db->NewIterator(leveldb::ReadOptions());
 for (it->SeekToFirst(); it->Valid(); it->Next()) {
@@ -109,6 +117,7 @@ delete it;
 ```
 
 下面的修改后的例子演示了如何仅获取`[start, limit)`范围内的键；
+
 ```cpp
 for (it->Seek(start);
      it->Valid() && it->key().ToString() < limit;
@@ -118,6 +127,7 @@ for (it->Seek(start);
 ```
 
 还可以通过相反的顺序进行处理。（警告：反向迭代比正向迭代慢一些）
+
 ```cpp
 for (it->SeekToLast(); it->Valid(); it->Prev()) {
   ...
@@ -129,6 +139,7 @@ for (it->SeekToLast(); it->Valid(); it->Prev()) {
 快照在键值存储的整体状态上提供了一致的只读视图。`ReadOptions::snapshot`可能是`non-NULL`，表示读取操作在特定的`DB`版本状态上进行的。如果`ReadOptions::snapshot`是`NULL`，则读取操作将在当前状态上进行隐式的快照操作。
 
 快照是通过`DB::GetSnapshot`方法进行创建的：
+
 ```cpp
 leveldb::ReadOptions options;
 options.snapshot = db->GetSnapshot();
@@ -146,6 +157,7 @@ db->ReleaseSnapshot(options.snapshot);
 前面遇到的`it->key()`和`it->value()`调用的返回值就是`leveldb::Slice`类型的实例。`Slice`是一个简单的结构，它包含了一个`length`和一个指向外部字节数组的指针。返回`Slice`类型要比返回`std::string`类型的开销小得多，因为这样我们就不需要对那些比较大的键值进行拷贝了。此外，`leveldb`方法不返回以`nul`结尾的C风格字符串，因为`leveldb`的键和值允许包含`\0`字符。
 
 C++字符串和C风格字符串能够很容易的转换为`Slice`类型：
+
 ```cpp
 leveldb::Slice s1 = "hello";
 
@@ -154,12 +166,14 @@ leveldb::Slice s2 = str;
 ```
 
 一个`Slice`类型也很容易的就能转换回C++字符串：
+
 ```cpp
 std::string str = s1.ToString();
 assert(str == std::string("hello"));
 ```
 
 在使用`Slice`类型时要格外小心，因为它依赖调用者来保证`Slice`指向的外部字符数组有效。比如下面这个例子就是有问题的：
+
 ```cpp
 leveldb::Slice slice;
 if (...) {
@@ -201,6 +215,7 @@ class TwoPartComparator : public leveldb::Comparator {
 ```
 
 现在使用这个自定义的比较器创建数据库：
+
 ```cpp
 TwoPartComparator cmp;
 leveldb::DB* db;
@@ -228,6 +243,7 @@ leveldb::Status status = leveldb::DB::Open(options, "/tmp/testdb", &db);
 #### Compression - 压缩
 
 每个`block`在被写入持久化存储器之前都会被单独压缩。由于默认的压缩方法速度非常快，并且对不可压缩的数据禁用压缩，因此压缩默认的状态是打开的。只有在极少数的情况下，应用才会完全关闭压缩，但只有在通过`benchmarks`能看到性能提升时才应该这样做：
+
 ```cpp
 leveldb::Options options;
 options.compression = leveldb::kNoCompression;
@@ -237,6 +253,7 @@ options.compression = leveldb::kNoCompression;
 #### Cache - 缓存
 
 数据库的内容存储在文件系统的一组文件中，并且每个文件存储的都是一系列压缩过的`blocks`。如果`options.cache`的值时`non-NULL`的，那么那些用过的未被压缩的`block`的内容将被存储在缓存中。
+
 ```cpp
 #include "leveldb/cache.h"
 
@@ -252,6 +269,7 @@ delete options.cache;
 注意，缓存里存放的时未压缩的数据，因此它的大小是应用层面的数据大小，而不是压缩后的。（压缩过的`block`是交给操作系统缓冲区去缓存的，或是由客户端提供的自定义的`Env`实现来完成的）。
 
 当执行大批量读取操作时，应用程序可能会希望禁用高速缓存，从而不会由于大批量的数据读取操作而消耗大量的缓存。一个针对迭代器的`option`参数可以实现这个目的：
+
 ```cpp
 leveldb::ReadOptions options;
 options.fill_cache = false;
@@ -266,6 +284,7 @@ for (it->SeekToFirst(); it->Valid(); it->Next()) {
 需要注意硬盘的传输和缓存的单位时一个`block`。相邻的`key`（跟据数据库的排序顺序）通常放置在同一个块中。因此，应用可以通过将相邻的`key`放置在一起进行访问、将不经常使用的`key`放置在单独的`key值`空间内的方法来提高性能。
 
 例如，假设我们在`leveldb`上实现一个简单的文件系统。我们通常需要存储的数据应该是：
+
 ```cpp
 filename -> permission-bits, length, list of file_block_ids
 file_block_id -> data
@@ -276,6 +295,7 @@ file_block_id -> data
 #### Filters - 过滤器
 
 由于`leveldb`的数据是按组存放在硬盘上的，所以一个`Get()`调用可能需要在硬盘上执行多次读取操作。可选的`FilterPolicy`机制可以显著的减少磁盘的读取操作量。
+
 ```cpp
 leveldb::Options options;
 options.filter_policy = NewBloomFilterPolicy(10);
@@ -330,6 +350,7 @@ class CustomFilterPolicy : public leveldb::FilterPolicy {
 ## 近似大小 - Approximate Size
 
 `GetApproximateSizes`方法可以用于获取一个或多个`key range`占用的文件系统空间的近似大小：
+
 ```cpp
 leveldb::Range ranges[2];
 ranges[0] = leveldb::Range("a", "c");
@@ -343,6 +364,7 @@ leveldb::Status s = db->GetApproximateSizes(ranges, 2, sizes);
 ## 环境 - Environment
 
 由`leveldb`执行的所有文件操作（和其他操作系统的调用操作）都通过`leveldb::Env`对象统一管理。高级的客户端可以自己提供`Env`来实现更好的控制。例如，应用可以在文件IO中引入人为的延迟来限制`leveldb`对系统中其他活动的影响：
+
 ```cpp
   class SlowEnv : public leveldb::Env {
     .. implementation of the Env interface ...
@@ -361,7 +383,11 @@ leveldb::Status s = db->GetApproximateSizes(ranges, 2, sizes);
 ## 其他信息 - Other Information
 
 关于`leveldb`的更多实现信息可以参考下面的文档
+
 + [Implementation notes](https://rawgit.com/google/leveldb/master/doc/impl.html)
+
 + [LevelDB实现(译)](http://duanple.blog.163.com/blog/static/70971767201171821616246/)
+
 + [Format of an immutable Table file](https://rawgit.com/google/leveldb/master/doc/table_format.txt)
+
 + [Format of a log file](https://rawgit.com/google/leveldb/master/doc/log_format.txt)
