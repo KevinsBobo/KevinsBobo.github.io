@@ -14,9 +14,6 @@
 ---
 
 ### LevelDB源码阅读笔记
-- test
-    - test2
-        - test3
 
 #### [LevelDB文档中文翻译](http://kevins.pro/blog/leveldb_chinese_doc/)
 

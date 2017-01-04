@@ -12,38 +12,46 @@
 ---
 
 ## 2016年12月21日
+
 + KMP算法 - [Code](http://github.com/KevinsBobo/book_code/blob/master/data_structure/05_string_kmp.cpp)
 
 ---
 
 ## 2016年12月15日
+
 + 练习了《算法笔记》第四章第1节 - 排序<br>
 在练习题中采用了比书中更有效的方法 - [Code](http://github.com/KevinsBobo/book_code/blob/master/algorithm_note/04_initial_01_sort_exercises.cpp)
 
 ---
 
 ## 2016年12月14日
+
 + 练习了《程序员代码面试指南》第一章第9节 - 最大值减去最小值小于或等于num的子数组数量 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_09_getChildrenArrNum.cpp)
 
 ---
 
 ## 2016年12月13日
+
 + 练习了《程序员代码面试指南》第一章第8节 - 最大子矩阵 - [Code](http://github.com/KevinsBobo/book_code/blob/master/zuocodebook/01_StackQueue_08_getMaxRecSize.cpp)
+
 + 看完了《编码：隐匿在计算机软硬件背后的语言》：接下来阅读《现代操作系统（第3版）》
 
 ---
 
 ## 2016年12月12日
+
 + 向用汇编写程序的前辈们致敬
 
 ---
 
 ## 2016年12月11日
+
 + Python是很优秀的语言！
 
 ---
 
 ## 2016年12月09日
+
 + 阅读了《编码：隐匿在计算机软硬件背后的语言》15到19章：<br>
 在实现自动操作中，条件跳转是重中之重，通过由逻辑门组成的各种计数器、选择器、累加器、加法器、锁存器等组合之后可以实现在存储器中寻址、获取数据、存储数据与条件跳转等功能，从而实现了自动操作。<br>
 这些硬件的组合实现了计算机芯片的简单原型，而各种复杂的自动操作组合成的编码就是软件开发！这个程度的编码其实是在内存中存入相应的操作码和数据码，通过硬件的寻址与跳转功能对这些存储器中的数据进行操作。而对这些操作码起别名(助记符)、建立规则就形成了汇编语言！
