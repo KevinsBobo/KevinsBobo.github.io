@@ -8,6 +8,7 @@
 ---
 
 ## 目录
+
 + [0x01\_stdint.h - 基本数据类型别名](#0x01_stdinth)
 + [0x02\_coding.h - 字节序及存储方法](#0x02_codingh)
 + [0x03\_slice.h - Slice结构](#0x03_sliceh)
@@ -16,7 +17,9 @@
 
 ---
 <span id="0x01_stdinth"></span>
+
 ## 0x01\_stdint.h
+
 > `port/win/stdint.h`<br>
 > 设置了基本数据类型别名
 
@@ -33,11 +36,14 @@ typedef unsigned long long    uint64_t;
 ```
 
 <span id="0x02_codingh"></span>
+
 ## 0x02\_coding.h
+
 > `util/coding.h`<br>
 > 定义了数字存储的方式-`little-endian`-小端序，和存储方法-`varint`-数值压缩存储
 
 以下为操作32位整型函数的分析（具体实现细节见函数定义部分）：
+
 ```cpp
 /* 存储函数开始 */
 // 创建一个大小为value存储字节长度的字符数组，
@@ -107,53 +113,61 @@ extern char* EncodeVarint32(char* dst, uint32_t value);
 > 更多内容细节和实现请参见[util/coding.h](https://github.com/KevinsBobo/leveldb/blob/master/util/coding.h)(中英文注释)和[util/coding.cc](https://github.com/KevinsBobo/leveldb/blob/master/util/coding.cc)
 
 <span id="0x03_sliceh"></span>
+
 ## 0x03\_slice.h
 
 > `include/leveldb/slice.h`<br>
 > `leveldb`的一个基本数据结构
 
 #### 1. 结构数据内容：
+
 + 一个指向外部存储的字节数组
 + 一个字节数组的长度值
 
 #### 2. 优势：
+
 + 效率高
 + 节省空间
 + 可以包含`\0`字符
 
 #### 3. 兼容性：
+
 + 能够很容易的和C++`string`类型相互转换
 + C风格字符串可以很容易的转换为`Slice`类型，但不能将`Slice`类型转换为C风格字符串。因为`Slice`类型的数据中允许包含`\0`
 
 > 更多细节和例子参见[include/leveldb/slice.h](https://github.com/KevinsBobo/leveldb/blob/master/include/leveldb/slice.h)(中英文注释)和[中文文档](http://kevins.pro/blog/leveldb_chinese_doc/)
 
 <span id="0x04_statush"></span>
+
 ## 0x04\_status.h
 
 > `include/leveldb/status.h`<br>
 > 返回`leveldb`操作执行后的状态
 
 #### 1. 结构的数据内容：
+
 + 一个包含状态信息的字符型指针<br>成功状态(OK)时为NULL，否则指向一个包含如下信息的数组：
-```cpp
-state_[0..3] == 消息message长度
-state_[4]    == 消息code
-state_[5..]  == 消息message
-```
+
+    ```cpp
+    state_[0..3] == 消息message长度
+    state_[4]    == 消息code
+    state_[5..]  == 消息message
+    ```
 
 + 一组枚举类型，代表状态码：
-```cpp
-enum Code {
-  kOk = 0,
-  kNotFound = 1,
-  kCorruption = 2,
-  kNotSupported = 3,
-  kInvalidArgument = 4,
-  kIOError = 5
-};
-```
+    ```cpp
+    enum Code {
+      kOk = 0,
+      kNotFound = 1,
+      kCorruption = 2,
+      kNotSupported = 3,
+      kInvalidArgument = 4,
+      kIOError = 5
+    };
+    ```
 
 #### 2. 方法：
+
 + 支持赋值操作
 + 包含返回状态的方法
 + 包含判断错误状态的方法
@@ -162,6 +176,7 @@ enum Code {
 > 更多细节和实现参见[include/leveldb/status.h](https://github.com/KevinsBobo/leveldb/blob/master/include/leveldb/status.h)(中英文注释)和[util/status.cc](https://github.com/KevinsBobo/leveldb/blob/master/util/status.cc)
 
 <span id="0x05_arenah"></span>
+
 ## 0x05\_arena.h
 
 > `util/arena.h`<br>
