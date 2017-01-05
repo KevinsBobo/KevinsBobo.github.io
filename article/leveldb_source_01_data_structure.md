@@ -148,23 +148,24 @@ extern char* EncodeVarint32(char* dst, uint32_t value);
 
 + 一个包含状态信息的字符型指针<br>成功状态(OK)时为NULL，否则指向一个包含如下信息的数组：
 
-    ```cpp
-    state_[0..3] == 消息message长度
-    state_[4]    == 消息code
-    state_[5..]  == 消息message
-    ```
+```cpp
+state_[0..3] == 消息message长度
+state_[4]    == 消息code
+state_[5..]  == 消息message
+```
 
 + 一组枚举类型，代表状态码：
-    ```cpp
-    enum Code {
-      kOk = 0,
-      kNotFound = 1,
-      kCorruption = 2,
-      kNotSupported = 3,
-      kInvalidArgument = 4,
-      kIOError = 5
-    };
-    ```
+
+```cpp
+enum Code {
+  kOk = 0,
+  kNotFound = 1,
+  kCorruption = 2,
+  kNotSupported = 3,
+  kInvalidArgument = 4,
+  kIOError = 5
+};
+```
 
 #### 2. 方法：
 
