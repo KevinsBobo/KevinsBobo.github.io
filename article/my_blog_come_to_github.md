@@ -14,6 +14,7 @@
 + blog文件夹下存放和article文件夹下md文件同名且不带后缀的文件夹，这些文件夹下都存放相同的[index.html](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/index.html)文件。
 
 关于这个index.html文件：
+
 + 是经过微调的官方主题主页文件，其中的引用都改成了绝对引用，增加了一个id为content的DIV标签。
 + 引入了[marked.min.js](http://github.com/chjj/marked/marked.min.js)这个强大的MarkDown编译库。
 + 引入了[highlight.js](http://highlightjs.org)来高亮MarkDown中的代码。
@@ -51,6 +52,7 @@ $(function(){
 ```
 
 需要注意的地方：
+
 + md第一行内容最好是一级标题格式的文章标题，这样可以精准修改网页标题
 + 每在article文件夹下写一篇md文章就需要在blog文件夹下建立同名的文件夹并将根目录下的index.html文件放进去。
 + 因为文章内容是动态获取的，在网页源码中并不存在文章内容，所以搜索引擎无法抓到文章内容，注重SEO的朋友要慎重。但是Google可以抓到我存在GitHub仓库里的md文件，也就意味着我的文章可以被搜到，这对于专注于记录的我来说足够了。
