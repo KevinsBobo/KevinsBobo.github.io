@@ -45,6 +45,7 @@ $ sudo apt-get install oracle-java8-installer
 # 设置系统jdk
 $ sudo update-java-alternatives -s java-8-oracle
 ```
+
 然后再尝试，还是错误，于是查看错误日志，发现了提示`Tomcat webapps/source/WEB-INF/web.xml`中的`configuration.xml`文件找不到，可是按照上面的安装步骤这个文件的地址要到下一步才配置，而且这一步的时候OpenGrok已经可以运行了。
 
 然而并没有其他可用的错误提示，无奈只能硬着头皮往下进行。配置完`configuration.xml`地址并创建索引后，重新尝试，还是错误。不过这次错误日志提供了下一条有用的信息`'<>' operator is not allowed for source level below 1.7`，这个说这个项目是要用jdk-7运行的，可是官方安装手册中明确要求的环境要是jdk8呀！无奈找不到更多的信息，只能更换jdk
@@ -57,6 +58,7 @@ $ sudo update-java-alternatives -s java-7-oracle
 在安装jdk-7的时候由于GreatWall的原因，下载速度极慢，于是从Oracle官网手动下载jdk包放入`/var/cache/orcale-jdk7-installer/`文件夹下，顺利完成安装。
 
 修改~/.bashrc，在文件尾加入以下配置
+
 ```bash
 JAVA_HOME=/home/weblogic/jdk1.7.0_72
 JRE_HOME=/home/weblogic/jdk1.7.0_72
@@ -71,6 +73,7 @@ export CLASSPATH
 这次是错误提示是`Context [/source]startup failed due to previous errors`
 
 看到其他博客说引起这个错误的原因很多，需要让Tomcat的log信息更精确些，于是在Tomcat安装目录下创建`common/classes/log4j.properties`文件，文件内容配置如下：
+
 ```
 log4j.rootLogger=info,Console,R
 log4j.appender.Console=org.apache.log4j.ConsoleAppender
