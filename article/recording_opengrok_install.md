@@ -1,8 +1,6 @@
 # 记录一次安装OpenGrop的心酸历程
 
 > 欢迎转载，转载请注明出处！<br><br>
-> Html版本: [recording\_opengork\_install](http://kevins.pro/blog/recording_opengrok_install/)<br>
-> MarkDown版本: [recording\_opengork\_install.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/recording_opengrok_install.md)<br><br>
 > [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
 
 ## 写在前面
