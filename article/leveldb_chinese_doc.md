@@ -4,8 +4,6 @@
 > 原文：https://rawgit.com/google/leveldb/master/doc/index.html<br>
 > 译者：[KevinsBobo](http://kevins.pro)<br><br>
 > 欢迎转载，转载请注明出处！<br><br>
-> Html版本: [leveldb\_chinese\_doc](http://kevins.pro/blog/leveldb_chinese_doc/)<br>
-> MarkDown版本: [leveldb\_source\_01\_data\_structure.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/leveldb_chinese_doc.md)<br><br>
 > [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
 
 LevelDB提供一个持久的键值存储库。keys 和 values 都可以是任意的字节数组。key是通过用户提供的比较器函数在键值存储器内进行排序的。
