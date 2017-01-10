@@ -1,8 +1,6 @@
 # 将博客搭建在Github上！
 
 > 欢迎转载，转载请注明出处！<br><br>
-> Html版本: [my\_blog\_come\_to\_github](http://kevins.pro/blog/my_blog_come_to_github/)<br>
-> MarkDown版本: [my\_blog\_come\_to\_github.md](http://github.com/KevinsBobo/KevinsBobo.github.io/blob/master/article/my_blog_come_to_github.md)<br><br>
 > [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
 
 关于在GitHub上搭建博客网上已经有了很多讨论，我也是看了这些讨论之后才决定将博客从搭建在OpenShift上的Wordpress转移到GitHub的，相关原理、优劣和开通方法在此不再赘述。想要从头搭建的朋友可上网搜索相关教程。本文主要记录我在不采用Jekyll等工具实现的静态页面+动态更新md文件的方法。
