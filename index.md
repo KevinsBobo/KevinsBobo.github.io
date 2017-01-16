@@ -24,7 +24,7 @@
 
 #### [将博客搭建在Github上](http://kevins.pro/blog/my_blog_come_to_github/)
 
-#### [Arduino打造USB蓝牙键盘扩展器](https://github.com/KevinsBobo/arduino_keyboard) - *GitHub*
+#### [Arduino打造USB蓝牙键盘扩展器](https://github.com/KevinsBobo/arduino_keyboard)
 
 #### [Git,Vim,Shell,Gcc,Gdb常用命令及快捷键速查表](http://github.com/KevinsBobo/cheat-sheet/) - *GitHub*
 
@@ -66,7 +66,7 @@
 
 ### 2016年7月
 
-#### [Arduino打造USB蓝牙键盘扩展器](https://github.com/KevinsBobo/arduino_keyboard) - *GitHub*
+#### [Arduino打造USB蓝牙键盘扩展器](https://github.com/KevinsBobo/arduino_keyboard)
 
 ### 2016年4月
 
