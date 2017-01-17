@@ -9,7 +9,7 @@
 <h2>{{ category | first }} ({{ category | last | size }})</h2>
 <ul>
 {% for post in category.last %}
-<li>{{ post.date | date: '%b %Y' }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+<li><h4>{{ post.date | date: '%b %Y' }} <a href="{{ post.url }}">{{ post.title }}</a></h4></li>
 {% endfor %}
 </ul>
 {% endfor %}
