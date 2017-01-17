@@ -4,15 +4,17 @@
 
 <span id="分类目录-查看时间目录"></span>
 
-## *分类目录* [*\[查看时间目录\]*](#时间目录-查看分类目录)
-
 ---
+{% for category in site.categories %}
+<h2>{{ category | first }}</h2> </span>{{ category | last | size }}</span> 
+<ul class="arc-list">
+{% for post in category.last %} 
+<li>{{ post.date | date_to_string}}<a href="{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul> 
+{% endfor %}
 
-<ul>
-　　{% for post in site.posts %}
-　　　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-　　{% endfor %}
-</ul>
+## *分类目录* [*\[查看时间目录\]*](#时间目录-查看分类目录)
 
 ---
 
