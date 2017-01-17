@@ -1,4 +1,7 @@
-# LevelDB中文文档
+---
+layout: default
+title: LevelDB中文文档
+---
 
 > 作者：Jeff Dean, Sanjay Ghemawat<br>
 > 原文：https://rawgit.com/google/leveldb/master/doc/index.html<br>
