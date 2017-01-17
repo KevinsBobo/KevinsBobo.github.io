@@ -2,7 +2,7 @@ title: Kevins Bobo
 description: Just love coding and life!
 google_analytics:
 show_downloads: false
-theme: jekyll-theme-cayman
+theme:
 
 markdown: kramdown
 kramdown:
