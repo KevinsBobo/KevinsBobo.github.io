@@ -7,11 +7,11 @@
 ---
 {% for category in site.categories %}
 <h2>{{ category | first }} ({{ category | last | size }})</h2>
-<ul class="arc-list">
-{% for post in category.last %} 
-<li>{{ post.date | date_to_string}}<a href="{{ post.url }}">{{ post.title }}</a></li>
+<ul>
+{% for post in category.last %}
+<li>{{ post.date | date: '%b %Y' }} <a href="{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
-</ul> 
+</ul>
 {% endfor %}
 
 ## *分类目录* [*\[查看时间目录\]*](#时间目录-查看分类目录)
