@@ -12,6 +12,3 @@ excerpt_separator: "\n"
 incremental: false
 
 highligther: rouge
-
-gems:
-  - jekyll-mentions
