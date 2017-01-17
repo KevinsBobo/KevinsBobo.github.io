@@ -12,3 +12,7 @@ excerpt_separator: "\n"
 incremental: false
 
 highligther: rouge
+
+permalink: none
+
+exclude: ["article", "blog", "javascripts", "stylesheets"]

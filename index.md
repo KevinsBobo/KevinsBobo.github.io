@@ -1,3 +1,8 @@
+---
+layout: default
+title: GitHub博客
+---
+
 # GitHub博客
 
 > [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
