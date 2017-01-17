@@ -8,6 +8,14 @@
 
 ---
 
+<ul>
+　　{% for post in site.posts %}
+　　　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+　　{% endfor %}
+</ul>
+
+---
+
 ### LevelDB源码阅读笔记
 
 #### [LevelDB文档中文翻译](http://kevins.pro/blog/leveldb_chinese_doc/)
