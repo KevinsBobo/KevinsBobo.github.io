@@ -4,13 +4,16 @@ title: LevelDB中文文档
 category: LevelDB源码阅读笔记
 ---
 
-# LevelDB源码阅读笔记
-
 > 作者：Jeff Dean, Sanjay Ghemawat<br>
 > 原文：https://rawgit.com/google/leveldb/master/doc/index.html<br>
-> 译者：[KevinsBobo](http://kevins.pro)<br><br>
-> 欢迎转载，转载请注明出处！<br><br>
-> [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
+> 译者：[KevinsBobo](http://kevins.pro)
+
+---
+
+## 目录
+
+* TOC
+{:toc}
 
 LevelDB提供一个持久的键值存储库。keys 和 values 都可以是任意的字节数组。key是通过用户提供的比较器函数在键值存储器内进行排序的。
 
@@ -66,7 +69,7 @@ if (s.ok()) s = db->Put(leveldb::WriteOptions(), key2, value);
 if (s.ok()) s = db->Delete(leveldb::WriteOptions(), key1);
 ```
 
-## 原子更新 - [Atomic Updates](https://en.wikipedia.org/wiki/Atomicity_(database_systems)
+## 原子更新 - [Atomic Updates](https://en.wikipedia.org/wiki/Atomicity_(database_systems))
 
 注意：上面的操作如果进程在`Put key2`和`Delete key1`两个操作之间结束，那么这两个键将存储相同的值。因此，尽可能使用`WriteBatch`类来避免这类问题：
 

@@ -4,20 +4,11 @@ title: 0x01-数据结构-LevelDB源码阅读
 category: LevelDB源码阅读笔记
 ---
 
-# LevelDB源码阅读笔记
-
-> 欢迎转载，转载请注明出处！<br><br>
-> [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
-
 ---
-
 ## 目录
 
-+ [0x01\_stdint.h - 基本数据类型别名](#0x01_stdinth)
-+ [0x02\_coding.h - 字节序及存储方法](#0x02_codingh)
-+ [0x03\_slice.h - Slice结构](#0x03_sliceh)
-+ [0x04\_status.h - 返回状态的数据结构](#0x04_statush)
-+ [0x05\_arena.h - 简单的内存池](#0x05_arenah)
+* TOC
+{:toc}
 
 ---
 <span id="0x01_stdinth"></span>

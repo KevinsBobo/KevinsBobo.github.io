@@ -5,8 +5,10 @@
     <title>{{ page.title | default: site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link href='/assets/css/opensans.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="/assets/css/mysyntax.css">
   </head>
   <body>
     <section class="page-header">
@@ -15,13 +17,20 @@
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
       {% endif %}
-      {% if site.show_downloads %}
-        <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
-        <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
+      {% if site.show_nav %}
+        <a href="{{ site.url }}" class="btn">&nbsp&nbsp首&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp页&nbsp&nbsp</a>
+        <a href="{{ site.url }}" class="btn">About me</a>
       {% endif %}
     </section>
 
     <section class="main-content">
+      <h1>{{ page.title }}</h1>
+      <blockquote>
+        <p>
+        欢迎转载，转载请注明出处！<a href="{{ post.url }}">原文地址</a><br><br>
+        <a href="http://github.com/KevinsBobo/">Follow me on GitHub ^_^</a>
+        </p>
+      </blockquote>
       {{ content }}
 
       <footer class="site-footer">

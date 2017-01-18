@@ -1,7 +1,7 @@
 title: Kevins Bobo
 description: Just love coding and life!
 google_analytics:
-show_downloads: false
+show_nav: tGue
 theme:
 
 markdown: kramdown
@@ -13,6 +13,6 @@ incremental: false
 
 highligther: rouge
 
-permalink: none
+permalink: /:title.html
 
 exclude: ["article", "blog", "javascripts", "stylesheets"]
