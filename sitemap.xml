@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://kevins.pro/cheat-sheet.html</loc>
+        <lastmod>2017-01-19T20:25:31+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://kevins.pro/arduino_keyboard.html</loc>
         <lastmod>2017-01-19T19:26:18+08:00</lastmod>
     </url>
