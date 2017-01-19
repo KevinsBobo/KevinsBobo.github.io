@@ -1,4 +1,8 @@
-# Arduino打造USB蓝牙键盘扩展器
+---
+title: Arduino打造USB蓝牙键盘扩展器
+layout: default
+category: 偷懒必须先勤快
+---
 
 ### 基于arduino的键盘扩展器，将USB键盘插在扩展器上后，USB键盘有蓝牙键盘功能，实现可修改键盘布局（Dovrak）、调整大写锁定与Ctrl位置并在键盘上集成了鼠标功能
 

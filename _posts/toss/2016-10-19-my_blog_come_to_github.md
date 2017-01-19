@@ -1,4 +1,8 @@
-# 将博客搭建在Github上！
+---
+title: 将博客搭建在Github上！
+layout: default
+category: 偷懒必须先勤快
+---
 
 > 欢迎转载，转载请注明出处！<br><br>
 > [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)

@@ -1,4 +1,8 @@
-# 记录一次安装OpenGrop的心酸历程
+---
+title: 记录一次安装OpenGrop的心酸历程
+layout: default
+category: 偷懒必须先勤快
+---
 
 > 欢迎转载，转载请注明出处！<br><br>
 > [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
