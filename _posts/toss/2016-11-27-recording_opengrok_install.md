@@ -108,6 +108,6 @@ What?!上面告诉我整个项目是用jdk7编译的，现在这里告诉我这�
 
 然后将电脑配置更换回jdk8，安装0.12.1.6版，启动。此时我以不想用言语表达我喜悦并悲伤的心情了，一切尽在下图中：
 
-<img src="http://kevins.pro/blog/recording_opengrok_install/opengrok_install_success.png" width="100%"/>
+<img src="/assets/img/opengrok_install_success.png" width="100%"/>
 
 虽然折腾大，踩了好多坑，但是收获了OpenGrok这个神器，一切都值！
