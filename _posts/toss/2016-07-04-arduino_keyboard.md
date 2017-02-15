@@ -1,6 +1,7 @@
 ---
 title: Arduino打造USB蓝牙键盘扩展器
 comments: true
+verifid: 2016070401
 layout: default
 category: 偷懒必须先勤快
 ---
