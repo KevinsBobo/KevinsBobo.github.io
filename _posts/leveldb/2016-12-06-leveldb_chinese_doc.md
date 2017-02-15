@@ -1,6 +1,7 @@
 ---
 layout: default
 comments: true
+verifid: 2016120601
 title: LevelDB中文文档
 category: LevelDB
 ---
