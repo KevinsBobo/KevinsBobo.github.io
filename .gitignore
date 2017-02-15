@@ -2,3 +2,5 @@
 *.~
 *.swp
 *.out
+*.lock
+_site
