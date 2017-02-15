@@ -1,7 +1,7 @@
 ---
 title: Vim, Git, Shell, Gcc, Gdb 速查表
 comments: true
-verif: 2016041401
+verifid: 2016041401
 layout: default
 category: 偷懒必须先勤快
 ---
