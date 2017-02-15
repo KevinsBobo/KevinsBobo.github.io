@@ -1,5 +1,6 @@
 ---
 title: 记录一次安装OpenGrop的心酸历程
+comments: true
 layout: default
 category: 偷懒必须先勤快
 ---

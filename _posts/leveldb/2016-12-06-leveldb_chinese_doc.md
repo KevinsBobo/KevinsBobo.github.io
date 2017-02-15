@@ -1,5 +1,6 @@
 ---
 layout: default
+comments: true
 title: LevelDB中文文档
 category: LevelDB
 ---

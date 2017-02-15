@@ -1,5 +1,6 @@
 ---
 title: Vim, Git, Shell, Gcc, Gdb 速查表
+comments: true
 layout: default
 category: 偷懒必须先勤快
 ---

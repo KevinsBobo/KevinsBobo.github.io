@@ -1,5 +1,6 @@
 ---
 title: 学无止境
+comments: true
 layout: default
 category: 学习日志
 ---

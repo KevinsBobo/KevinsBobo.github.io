@@ -1,5 +1,6 @@
 ---
 title: 将博客搭建在Github上！
+comments: true
 layout: default
 category: 偷懒必须先勤快
 ---
