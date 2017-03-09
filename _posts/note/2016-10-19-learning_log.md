@@ -1,7 +1,7 @@
 ---
 title: 学无止境
 comments: true
-verifid: 2016101901
+verifid: 2016101902
 layout: default
 category: 学习日志
 ---
