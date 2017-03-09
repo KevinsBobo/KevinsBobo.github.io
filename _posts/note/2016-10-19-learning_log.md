@@ -7,8 +7,12 @@ category: 学习日志
 ---
 
 ---
+## 2017年03月09日
++ C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x04_homework.cpp)
+
+---
 ## 2017年03月08日
-+ C语言基础联系 -[Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x03_homework.cpp)
++ C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x03_homework.cpp)
 
 ---
 
