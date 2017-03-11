@@ -7,7 +7,7 @@ category: 学习日志
 ---
 
 ---
-## 2017年03年10日
+## 2017年03年11日
 + C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x06_homework.cpp)
 
 ---
