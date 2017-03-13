@@ -7,7 +7,11 @@ category: 学习日志
 ---
 
 ---
-## 2017年03年11日
+## 2017年03月13日
++ 《C和指针》第十二章练习题7 - [Cod](http://github.com/KevinsBobo/book_code/blob/master/pointers_on_c/12_struct&pointer_exercises_7.c)
+
+---
+## 2017年03月11日
 + C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x06_homework.cpp)
 
 ---
