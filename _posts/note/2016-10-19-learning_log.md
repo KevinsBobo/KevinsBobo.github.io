@@ -6,9 +6,12 @@ layout: default
 category: 学习日志
 ---
 
+## 2017年3月15日
++ C语言版坦克大战第二天，功能实现 - [Code](https://github.com/KevinsBobo/cTankeWar)
+
 ---
 ## 2017年3月14日
-+ C语言版坦克大战第一天 - [Code](https://github.com/KevinsBobo/cTankeWar)
++ C语言版坦克大战第一天，抽象所有元素为一个结构体 - [Code](https://github.com/KevinsBobo/cTankeWar)
 
 ---
 ## 2017年03月13日
