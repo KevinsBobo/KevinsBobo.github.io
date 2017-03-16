@@ -7,6 +7,10 @@ category: 学习日志
 ---
 
 ---
+## 2017年3月16日
++ C语言版坦克大战第三天，完成碰撞检测，重写输出逻辑 - [Code](https://github.com/KevinsBobo/cTankeWar)
+
+---
 ## 2017年3月15日
 + C语言版坦克大战第二天，功能实现 - [Code](https://github.com/KevinsBobo/cTankeWar)
 
