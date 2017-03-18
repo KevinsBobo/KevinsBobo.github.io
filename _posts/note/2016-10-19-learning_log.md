@@ -5,6 +5,10 @@ verifid: 2016101902
 layout: default
 category: 学习日志
 ---
+---
+## 2017年3月18日
++ C语言版坦克大战，完成所有功能，等待使用C++重构 - [Code](https://github.com/KevinsBobo/cTankeWar)
+
 
 ---
 ## 2017年3月17日
