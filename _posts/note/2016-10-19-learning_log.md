@@ -6,7 +6,12 @@ layout: default
 category: 学习日志
 ---
 ---
-## 2017年3月18日
+## 2017年3月20日
++ C++基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x08_homework.cpp)
+
+
+---
+## 2017年3月19日
 + C语言版坦克大战，完成所有功能，等待使用C++重构 - [Code](https://github.com/KevinsBobo/cTankeWar)
 + C++基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x07_homework.cpp)
 
