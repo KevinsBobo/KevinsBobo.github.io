@@ -6,9 +6,12 @@ layout: default
 category: 学习日志
 ---
 ---
+## 2017年3月21日
++ C++基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x09_homework.cpp) [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x0A_homework.cpp)
+
+---
 ## 2017年3月20日
 + C++基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x08_homework.cpp)
-
 
 ---
 ## 2017年3月19日
