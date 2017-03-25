@@ -6,6 +6,11 @@ layout: default
 category: 学习日志
 ---
 ---
+## 2017年3月25日
++ 实现了线索二叉树 - [code](https://github.com/KevinsBobo/book_code/blob/master/data_structure/06_tree.cpp)
++ 完成了KMP算法的推导与实现 - [code](https://github.com/KevinsBobo/book_code/blob/master/data_structure/05_string_kmp.cpp)<br>《大话数据结构》书中的KMP算法的实现是定义字符数组第0位为保存字符串长度，从第1位开始才是字符串，所以算法的实现也是从第一位开始的。而我觉得这样有些不实际，毕竟一个字符数组要转化成第一位保存长度的数组需要对数组每一位进行操作拷贝或移动操作，浪费时间。<br>所以我就采用自定义了一个包含长度和字符数组的结构体，对其进行后续的操作，但是这样算法的实现就要从下标0开始了，`next`数组第一位和`j`的初始值就要设为-1，和书中采用的实现方法产生了冲突，于是自己推导新的实现，最终采用相反的逻辑顺序实现了。<br>自第一次实现KMP到现在才开始推导和实现我的想法，已经三个月了，这拖延症，真没法了。。。
+
+---
 ## 2017年3月24日
 + 数据结构基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x0C_homework.cpp)
 
