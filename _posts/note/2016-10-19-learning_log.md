@@ -12,45 +12,45 @@ category: 学习日志
 
 ---
 ## 2017年3月24日
-+ 数据结构基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x0C_homework.cpp)
++ 数据结构基础练习
 
 ---
 ## 2017年3月23日
-+ 数据结构基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x0C_homework.cpp)
++ 数据结构基础练习
 
 ---
 ## 2017年3月22日
-+ 数据结构基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x0A_homework.cpp)
++ 数据结构基础练习
 
 ---
 ## 2017年3月21日
-+ C++基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x09_homework.cpp) [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x0A_homework.cpp)
++ C++基础练习
 
 ---
 ## 2017年3月20日
-+ C++基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x08_homework.cpp)
++ C++基础练习
 
 ---
 ## 2017年3月19日
-+ C语言版坦克大战，完成所有功能，等待使用C++重构 - [Code](https://github.com/KevinsBobo/cTankeWar)
-+ C++基础练习 - [code](https://github.com/KevinsBobo/book_code/tree/master/15pb/0x07_homework.cpp)
++ C语言版坦克大战，完成所有功能，等待使用C++重构 - [Code](https://github.com/KevinsBobo/cTankWar)
++ C++基础练习
 
 
 ---
 ## 2017年3月17日
-+ C语言版坦克大战第四天，完成所有基本功能 - [Code](https://github.com/KevinsBobo/cTankeWar)
++ C语言版坦克大战第四天，完成所有基本功能 - [Code](https://github.com/KevinsBobo/cTankWar)
 
 ---
 ## 2017年3月16日
-+ C语言版坦克大战第三天，完成碰撞检测，重写输出逻辑 - [Code](https://github.com/KevinsBobo/cTankeWar)
++ C语言版坦克大战第三天，完成碰撞检测，重写输出逻辑 - [Code](https://github.com/KevinsBobo/cTankWar)
 
 ---
 ## 2017年3月15日
-+ C语言版坦克大战第二天，功能实现 - [Code](https://github.com/KevinsBobo/cTankeWar)
++ C语言版坦克大战第二天，功能实现 - [Code](https://github.com/KevinsBobo/cTankWar)
 
 ---
 ## 2017年3月14日
-+ C语言版坦克大战第一天，抽象所有元素为一个结构体 - [Code](https://github.com/KevinsBobo/cTankeWar)
++ C语言版坦克大战第一天，抽象所有元素为一个结构体 - [Code](https://github.com/KevinsBobo/cTankWar)
 
 ---
 ## 2017年03月13日
@@ -58,30 +58,29 @@ category: 学习日志
 
 ---
 ## 2017年03月11日
-+ C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x06_homework.cpp)
++ C语言基础练习
 
 ---
 ## 2017年03月10日
-+ C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x05_homework.cpp)
++ C语言基础练习
 
 ---
 ## 2017年03月09日
-+ C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x04_homework.cpp)
++ C语言基础练习
 
 ---
 ## 2017年03月08日
-+ C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x03_homework.cpp)
++ C语言基础练习
 
 ---
 
 ## 2017年03月07日
-+ C语言基础练习 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x02_homework.cpp)
++ C语言基础练习
 
 ---
 
 ## 2017年03月06日
-+ 一个全新的开始，加油！
-+ 二进制转换 - [Code](https://github.com/KevinsBobo/book_code/blob/master/15pb/0x01_homework.cpp)
++ 二进制转换
 
 ---
 
