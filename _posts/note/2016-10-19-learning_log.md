@@ -5,6 +5,11 @@ verifid: 2016101902
 layout: default
 category: 学习日志
 ---
+
+---
+## 2017年3月30日
++ C语言学生管理系统（基于文件）第一天 - [Code](https://github.com/KevinsBobo/stu_manage_system)
+
 ---
 ## 2017年3月25日
 + 实现了线索二叉树 - [code](https://github.com/KevinsBobo/book_code/blob/master/data_structure/06_tree.cpp)
