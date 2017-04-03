@@ -7,6 +7,12 @@ category: 学习日志
 ---
 
 ---
+## 2017年4月3日
++ 修改学生管理系统Bug
+    1. 合并相邻空碎片
+    2. 输入缓冲区溢出问题
+
+---
 ## 2017年4月2日
 + C语言学生管理系统（基于文件）第四天 完成所有功能 - [Code](https://github.com/KevinsBobo/stu_manage_system)
 
