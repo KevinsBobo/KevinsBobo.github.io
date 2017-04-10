@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GitHub博客
+title: Coding博客
 ---
 
 ---
