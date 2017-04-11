@@ -7,6 +7,11 @@ category: 学习日志
 ---
 
 ---
+## 2017年4月10日
++ 探索C/C++的```va_list```原理 - [Article](http://kevins.pro/va_list.html)
++ C++拷贝、析构、堆对象（数组）创建与释放
+
+---
 ## 2017年4月9日
 + GPG加密工具
 
