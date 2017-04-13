@@ -1,5 +1,5 @@
 ---
-title: C/C++无名对象与编译器对其的优化
+title: C++无名对象与编译器对其的优化
 comments: true
 verifid: 2017041301
 layout: default
@@ -114,7 +114,7 @@ int main(){
 
 ##### 运行结果
 
-![](/asserts/img/onnameobj/runRet.png)
+![](/assets/img/nonameobj/runRet.png)
 
 ##### 优化情况分析
 
