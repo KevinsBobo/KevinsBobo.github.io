@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Coding博客
+title: KevinsBobo's Coding博客
 ---
 
 ---
