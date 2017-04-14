@@ -6,7 +6,7 @@ layout: default
 category: 偷懒必须先勤快
 ---
 
-<iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=book_code&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+<iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=arduino_keyboard&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 
 ### 基于arduino的键盘扩展器，将USB键盘插在扩展器上后，USB键盘有蓝牙键盘功能，实现可修改键盘布局（Dovrak）、调整大写锁定与Ctrl位置并在键盘上集成了鼠标功能
 
