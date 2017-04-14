@@ -6,8 +6,7 @@ layout: default
 category: 偷懒必须先勤快
 ---
 
-> 欢迎转载，转载请注明出处！<br><br>
-> [Follow me on GitHub ^\_^](http://github.com/KevinsBobo/)
+<iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=kevinsbobo.github.io&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 
 **折腾后该是感觉SEO和评论都挺重要的，所与就将博客迁移到了 coding.net ，并且使用了Jekyll引擎和Disqus评论**
 
