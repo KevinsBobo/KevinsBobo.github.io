@@ -1,6 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://kevins.pro/no_name_obj.html</loc>
+        <lastmod>2017-04-13T19:15:00+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kevins.pro/va_list.html</loc>
+        <lastmod>2017-04-10T20:25:31+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://kevins.pro/cheat-sheet.html</loc>
         <lastmod>2017-01-19T20:25:31+08:00</lastmod>
     </url>
