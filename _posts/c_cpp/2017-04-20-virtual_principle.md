@@ -14,7 +14,7 @@ category: C/C++原理探索
 
 ---
 
-*TOC
+* TOC
 {:toc}
 
 # 引言：虚函数与多态
@@ -124,7 +124,7 @@ int main()
 
 输出：
 
-![](/assets/imp/virtual/0x01_common_inherit_output.png)
+![](/assets/img/virtual/0x01_common_inherit_output.png)
 
 正常调用攻击方法和析构
 
@@ -168,7 +168,7 @@ int main()
 
 输出：
 
-![](0x02_common_base_call_output.png)
+![](/assets/img/virtual/0x02_common_base_call_output.png)
 
 此时结果完全不对，并没有调用子类的攻击方法，而是直接调用了父类的攻击方法，而且在释放时也只是调用了父类的析构，并没有调用子类的析构！
 
@@ -207,7 +207,7 @@ protected:
 
 输出：
 
-![](0x03_virtual_base_call_output.png)
+![](/assets/img/virtual/0x03_virtual_base_call_output.png)
 
 这时调用攻击方法和析构就都正常了
 
@@ -258,7 +258,8 @@ protected:
 
 > 基于上面第一段没有加```virtual```关键字的代码
 
-// 测试代码
+测试代码：
+
 ```cpp
 // 给 CGuner 和 CKnight 加上下面两个数据成员
 int m_nBlood; // 覆盖父类同名数据成员，构造时初始化为 0x30
@@ -278,9 +279,12 @@ int main()
 内存观察：
 
 ![](/assets/img/virtual/0x04_common_inherit_memory.png)
-![](/assets/img/virtual/0x05_commom_soldier_memory.png)
-![](/assets/img/virtual/0x05_commom_guner_memory.png)
-![](/assets/img/virtual/0x05_commom_knight_memory.png)
+
+![](/assets/img/virtual/0x05_common_soldier_memory.png)
+
+![](/assets/img/virtual/0x05_common_guner_memory.png)
+
+![](/assets/img/virtual/0x05_common_knight_memory.png)
 
 我们发现，在父类内存中的数据成员虽然被子类覆盖了但还是出现在了子类内存中（如果父类有```private```数据成员也会出现在子类内存中，在此不做演示）
 
@@ -290,7 +294,8 @@ int main()
 
 > 基于上面在士兵类攻击方法和析构声明前加```virtual```关键字的代码（非抽象类）
 
-// 测试代码
+测试代码：
+
 ```cpp
 // 给 CGuner 和 CKnight 加上下面两个数据成员
 int m_nBlood; // 构造时初始化为 0x30
@@ -310,9 +315,12 @@ int main()
 内存观察：
 
 ![](/assets/img/virtual/0x08_virtual_inherit_memory.png)
-![](/assets/img/virtual/0x08_virtual_soldier_inherit_memory.png)
-![](/assets/img/virtual/0x0C_virtual_guner_inherit_memory.png)
-![](/assets/img/virtual/0x10_virtual_knight_inherit_memory.png)
+
+![](/assets/img/virtual/0x08_virtual_soldier_memory.png)
+
+![](/assets/img/virtual/0x0C_virtual_guner_memory.png)
+
+![](/assets/img/virtual/0x10_virtual_knight_memory.png)
 
 上图中绿线框中的内容是与没加```virtual```关键字内存情况的区别之处，同时我们也发现了内存中新增的部分是一个指针，这就是传说中的虚表指针，而这个指针指向的内容就是传中的虚表
 
@@ -331,18 +339,17 @@ int main()
 先来看一波连续的内存图：
 
 ![](/assets/img/virtual/0x08_virtual_inherit_memory.png)
-![](/assets/img/virtual/0x08_virtual_soldier_inherit_memory.png)
+
+![](/assets/img/virtual/0x08_virtual_soldier_memory.png)
 ![](/assets/img/virtual/0x09_virtual_soldier_vfptr_memory.png)
-![](/assets/img/virtual/0x0A_virtual_soldier_destruct.png)
-![](/assets/img/virtual/0x0B_virtual_soldier_attact.png)
-![](/assets/img/virtual/0x0C_virtual_guner_inherit_memory.png)
+![](/assets/img/virtual/0x0A_virtual_soldier_vfptr_destruct.png)
+![](/assets/img/virtual/0x0B_virtual_soldier_vfptr_attact.png)
+![](/assets/img/virtual/0x0C_virtual_guner_memory.png)
 ![](/assets/img/virtual/0x0D_virtual_guner_vfptr_memory.png)
-![](/assets/img/virtual/0x0A_virtual_guner_destruct.png)
-![](/assets/img/virtual/0x0B_virtual_guner_attact.png)
 ![](/assets/img/virtual/0x10_virtual_knight_inherit_memory.png)
 ![](/assets/img/virtual/0x11_virtual_knight_vfptr_memory.png)
-![](/assets/img/virtual/0x12_virtual_knight_destruct.png)
-![](/assets/img/virtual/0x13_virtual_knight_attact.png)
+![](/assets/img/virtual/0x12_virtual_knight_vfptr_destruct.png)
+![](/assets/img/virtual/0x13_virtual_knight_vfptr_attact.png)
 
 仔细分析上面的内存和反汇编图，我们看到每个类的虚表指针分别指向一张虚表，而这几张虚表又分别存储了上面加了```virtual```关键字的虚函数的地址，虚表第一个内容指向的是对应的类的析构，第二个内容指向的是对应的类的```attact()```方法
 
@@ -364,9 +371,12 @@ int main()
 
 将前面的内存分析代码中```guner```类的析构和```attact()```方法去掉，采用完全继承父类的方法后```guner```虚表的内存形态：
 
-![](/assets/img/virtual/0x14_virtual_gnuer_no_fun.png)
+![](/assets/img/virtual/0x14_virtual_guner_no_fun.png)
+
 ![](/assets/img/virtual/0x17_virtual_guner_attact.png)
+
 ![](/assets/img/virtual/0x15_virtual_soldier_destruct.png)
+
 ![](/assets/img/virtual/0x16_virtual_guner_destruct.png)
 
 我们看到，```gunerA```和```soldierA```中的虚表指针依然不同，而虚表指针指向的虚表的析构也是不同的（因为此时编译器给```CGuner```类了一个默认析构，所以还是相当于覆盖了```CSoldier```的虚析构方法），但```gunerA```虚表中的第二项和```soldierA```虚表中的第二项完全相同、指向同一个方法```CSoldier::attact()```
@@ -393,9 +403,13 @@ virtual void toHorsel()
 此时骑士类的内存情况：
 
 ![](/assets/img/virtual/0x18_virtual_knight_add_fun.png)
+
 ![](/assets/img/virtual/0x19_virtual_knight_vfptr.png)
+
 ![](/assets/img/virtual/0x1A_virtual_knight_destruct.png)
+
 ![](/assets/img/virtual/0x1B_virtual_knight_attact.png)
+
 ![](/assets/img/virtual/0x1C_virtual_knight_toHorsel.png)
 
 我们看到，新增的```toHorsel()```方法添加到了虚表后面的位置
@@ -426,7 +440,7 @@ virtual void toHorsel()
 
 - 进入之后：
 
-    ![](/assets/img/virtual/0x1E_setp_soldier_structure_after.png)
+    ![](/assets/img/virtual/0x1F_setp_soldier_structure_after.png)
 
 - 虚表：
 
@@ -664,9 +678,12 @@ rGuner.run();
 虚表：
 
 ![](/assets/img/virtual/0x27_virtual_tab.png)
+
 ![](/assets/img/virtual/0x28_guner_destruct.png)
-![](/assets/img/virtual/0x28_guner_attack.png)
-![](/assets/img/virtual/0x28_guner_run.png)
+
+![](/assets/img/virtual/0x29_guner_attack.png)
+
+![](/assets/img/virtual/0x2A_guner_run.png)
 
 - 第一条调用语句对应的反汇编```call```指令后直接写了一个地址，这个地址是```CGuner```类```attack()```方法的地址，所以这里是直接调用
 
@@ -698,11 +715,11 @@ pSoldierA->funTest();
 
 输出结果：
 
-![](/assets/img/virtual/0x0C_funTest_output.png)
+![](/assets/img/virtual/0x2C_funTest_output.png)
 
 结果竟然是正确的，所以来看一下反汇编：
 
-![](/assets/img/virtual/0x0D_funTest_call.png)
+![](/assets/img/virtual/0x2D_funTest_call.png)
 
 我们看到是间接调用的，得到结论：在普通成员函数中调用虚函数也是间接调用
 
@@ -739,6 +756,7 @@ pSoldierA->funTest();
 - 通过前面的实验，我们也知道在进入父类构造是虚表指针指向的是父类的构造，所以在这里调用虚函数也是不会出错的，所以直接看一下在```CSodier```构造中调用```attack()```的反汇编：
 
     ![](/assets/img/virtual/0x2E_struct_virtual.png)
+
     ![](/assets/img/virtual/0x2F_struct_virtual_call.png)
     
     没看错，就是是直接调用！想一想，在构造函数中绝对是调用当前类自己的方法，所以根本不需要间接调用
@@ -746,7 +764,8 @@ pSoldierA->funTest();
     那么要是在父类构造函数中通过普通函数调用虚函数会不会是直接调用？还是使用```funTest()```方法来测试：
 
     ![](/assets/img/virtual/0x30_struct_funTest.png)
-    ![](/assets/img/virtual/0x30_struct_funTest_call.png)
+
+    ![](/assets/img/virtual/0x31_struct_funTest_call.png)
     
     这时就是间接调用了
 
@@ -836,7 +855,8 @@ private:
 
 #### 无虚函数时
 
-![](/assets/img/virtual/0x33_mulitiple_novirtual.png)
+![](/assets/img/virtual/0x32_mulitiple_novirtual.png)
+
 ![](/assets/img/virtual/0x33_mulitiple_novirtual_memory.png)
 
 我们看到两个父类的数据成员都出现在了子类的内存中，并且是按照子类继承列表的顺序排列的
@@ -844,15 +864,21 @@ private:
 #### 有虚函数时
 
 ![](/assets/img/virtual/0x34_mulitiple_virtual.png)
+
 ![](/assets/img/virtual/0x35_mulitiple_virtual_memory.png)
 
 我们看到此时子类内存中多了两个地址数据，不需要进去查看里面是什么就能够猜到肯定是两个虚表指针。里面存的是什么呢？
 
 ![](/assets/img/virtual/0x36_mulitiple_virtual_vftab.png)
+
 ![](/assets/img/virtual/0x37_mulitiple_virtual_destruct.png)
+
 ![](/assets/img/virtual/0x38_mulitiple_virtual_site.png)
+
 ![](/assets/img/virtual/0x3B_mulitiple_virtual_vftab.png)
+
 ![](/assets/img/virtual/0x39_mulitiple_virtual_destruct.png)
+
 ![](/assets/img/virtual/0x3A_mulitiple_virtual_sleep.png)
 
 通过内存分析发现，两张表中的第一项都存放了子类的析构（两张虚表中子类析构的地址是不同的，因为这不是真的析构，而是经过一层包装的析构，在这里将其理解为析构），第二项存放的是子类继承父类的虚方法的地址
