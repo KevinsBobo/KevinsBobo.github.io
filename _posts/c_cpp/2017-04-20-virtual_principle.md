@@ -282,9 +282,9 @@ int main()
 
 ![](/assets/img/virtual/0x05_common_soldier_memory.png)
 
-![](/assets/img/virtual/0x05_common_guner_memory.png)
+![](/assets/img/virtual/0x06_common_guner_memory.png)
 
-![](/assets/img/virtual/0x05_common_knight_memory.png)
+![](/assets/img/virtual/0x07_common_knight_memory.png)
 
 我们发现，在父类内存中的数据成员虽然被子类覆盖了但还是出现在了子类内存中（如果父类有```private```数据成员也会出现在子类内存中，在此不做演示）
 
@@ -342,13 +342,19 @@ int main()
 
 ![](/assets/img/virtual/0x08_virtual_soldier_memory.png)
 ![](/assets/img/virtual/0x09_virtual_soldier_vfptr_memory.png)
+
 ![](/assets/img/virtual/0x0A_virtual_soldier_vfptr_destruct.png)
+
 ![](/assets/img/virtual/0x0B_virtual_soldier_vfptr_attact.png)
+
 ![](/assets/img/virtual/0x0C_virtual_guner_memory.png)
 ![](/assets/img/virtual/0x0D_virtual_guner_vfptr_memory.png)
-![](/assets/img/virtual/0x10_virtual_knight_inherit_memory.png)
+
+![](/assets/img/virtual/0x10_virtual_knight_memory.png)
 ![](/assets/img/virtual/0x11_virtual_knight_vfptr_memory.png)
+
 ![](/assets/img/virtual/0x12_virtual_knight_vfptr_destruct.png)
+
 ![](/assets/img/virtual/0x13_virtual_knight_vfptr_attact.png)
 
 仔细分析上面的内存和反汇编图，我们看到每个类的虚表指针分别指向一张虚表，而这几张虚表又分别存储了上面加了```virtual```关键字的虚函数的地址，虚表第一个内容指向的是对应的类的析构，第二个内容指向的是对应的类的```attact()```方法
