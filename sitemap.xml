@@ -1,51 +1,55 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://kevins.pro/no_name_obj.html</loc>
+        <loc>https://kevins.pro/virtual_principle.html</loc>
+        <lastmod>2017-04-20T18:00:00+08:00</lastmod>
+    </url>
+    <url>
+        <loc>https://kevins.pro/no_name_obj.html</loc>
         <lastmod>2017-04-13T19:15:00+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/va_list.html</loc>
+        <loc>https://kevins.pro/va_list.html</loc>
         <lastmod>2017-04-10T20:25:31+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/cheat-sheet.html</loc>
+        <loc>https://kevins.pro/cheat-sheet.html</loc>
         <lastmod>2017-01-19T20:25:31+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/arduino_keyboard.html</loc>
+        <loc>https://kevins.pro/arduino_keyboard.html</loc>
         <lastmod>2017-01-19T19:26:18+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/learning_log.html</loc>
+        <loc>https://kevins.pro/learning_log.html</loc>
         <lastmod>2017-01-19T19:26:18+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/my_blog_come_to_github.html</loc>
+        <loc>https://kevins.pro/my_blog_come_to_github.html</loc>
         <lastmod>2017-01-19T19:26:18+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/book_code.html</loc>
+        <loc>https://kevins.pro/book_code.html</loc>
         <lastmod>2017-01-19T19:34:39+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/recording_opengrok_install.html</loc>
+        <loc>https://kevins.pro/recording_opengrok_install.html</loc>
         <lastmod>2017-01-19T19:31:30+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/leveldb_source_00_overview.html</loc>
+        <loc>https://kevins.pro/leveldb_source_00_overview.html</loc>
         <lastmod>2017-01-19T19:47:09+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/leveldb_chinese_doc.html</loc>
+        <loc>https://kevins.pro/leveldb_chinese_doc.html</loc>
         <lastmod>2017-01-19T19:47:11+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/leveldb_source_01_data_structure.html</loc>
+        <loc>https://kevins.pro/leveldb_source_01_data_structure.html</loc>
         <lastmod>2017-01-19T19:47:15+08:00</lastmod>
     </url>
     <url>
-        <loc>http://kevins.pro/</loc>
+        <loc>https://kevins.pro/</loc>
         <lastmod>2017-01-19T19:41:41+08:00</lastmod>
     </url>
 </urlset>
