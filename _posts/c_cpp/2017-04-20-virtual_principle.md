@@ -286,7 +286,7 @@ int main()
 
 ![](/assets/img/virtual/0x07_common_knight_memory.png)
 
-我们发现，在父类内存中的数据成员虽然被子类覆盖了但还是出现在了子类内存中（如果父类有```private```数据成员也会出现在子类内存中，在此不做演示）
+我们发现，在父类内存中的数据成员虽然被子类覆盖了但还是出现在了子类内存中（如果父类有```private```数据成员也会出现在子类内存中，在此不做演示），如果有了解过组合内存情况的话就会发现继承的内存情况和组合的完全相同
 
 总结：在普通继承后，子类中包含父类所有数据成员，并且父类数据成员出现在子类内存起始位置
 
@@ -697,7 +697,7 @@ rGuner.run();
 
 - 第三条调用语句和第二条类似，不同的地方是偏移了8字节，因为```run()```方法在虚表中处于第三个位置
 
-以上就是间接调用了，总结一下：**只有对于通过指针或引用的方式调用虚函数才是间接调用**，有个特类```pGuner->CGuner::attack(); 或 pGuner->CSoldier::attack()```这样的调用是直接调用
+以上就是间接调用了，总结一下：**只有对于通过指针或引用的方式调用虚函数才是间接调用**，有个特例```pGuner->CGuner::attack(); 或 pGuner->CSoldier::attack()```这样的调用是直接调用
 
 这时有个疑问：通过普通函数调用虚函数是直接调用还是间接调用？
 
@@ -891,7 +891,7 @@ private:
 
 所以可以推测出如果子类重写了对应父类的虚方法，那么对应的虚表中的内容也就变化了
 
-#### 对多重继承虚表的探索
+### 对多重继承下虚表指针和虚表问题的探索
 
 > 懒得上图了，直接文字描述吧 ^_^
 
@@ -921,14 +921,249 @@ private:
 
 ## 在菱形继承与虚继承下的表现
 
-## 实现代码
+### 普通实现代码
 
 套用上面的例子：沙发和床都是家具，所以应该再创建一个家具类，让这两个类继承家具类，然后沙发床类再继承这两个类，就构成了菱形继承
 
 代码描述：
 
 ```cpp
+#include <iostream>
 
+class CFurnitrue
+{
+public:
+  CFurnitrue()
+    : m_nColor(0x00) , m_nTest(0xFF)
+  {
+    /* Nothing todo */
+  }
+
+  virtual ~CFurnitrue()
+  {
+    std::cout << "~CFurnitrue()" << std::endl;
+  }
+  
+  virtual int getColor()
+  {
+    return m_nColor;
+  }
+    
+protected:
+  int m_nColor;
+private:
+  int m_nTest;
+};
+
+class CSofa
+  : public CFurnitrue
+{
+public:
+  CSofa()
+    : CFurnitrue() , m_nTest(0x01)
+  {
+    /* Nothing todo */
+  }
+
+  virtual ~CSofa()
+  {
+    std::cout << "~CSofa()" << std::endl;
+  }
+  
+  virtual void site()
+  {
+    std::cout << "CSofa: Site" << std::endl;
+  }
+    
+private:
+  int m_nTest;
+};
+
+class CBed
+  : public CFurnitrue
+{
+public:
+  CBed()
+    : CFurnitrue() , m_nTest(0x02)
+  {
+    /* Nothing todo */
+  }
+
+  virtual ~CBed()
+  {
+    std::cout << "~CBed()" << std::endl;
+  }
+  
+  virtual void sleep()
+  {
+    std::cout << "CBed: Sleep" << std::endl;
+  }
+    
+private:
+  int m_nTest;
+};
+
+class CSofaBed
+  : public CSofa,
+    public CBed
+{
+public:
+  CSofaBed()
+    : CBed() , CSofa() , m_nTest(0x03)
+  {
+    /* Nothing todo */
+  }
+
+  virtual ~CSofaBed()
+  {
+    std::cout << "~CSofaBed()" << std::endl;
+  }
+  
+  virtual void lie()
+  {
+    std::cout << "CSofaBed: Lie" << std::endl;
+  }
+      
+private:
+  int m_nTest;
+};
 ```
+
+继承逻辑图：
+
+![](/assets/img/virtual/0x40_diamond_pic.png)
+
+#### 内存结构
+
+```cpp
+CSofaBed test;
+```
+
+首先来看没有虚函数时的```CSofaBed```内存情况：
+
+![](/assets/img/virtual/0x3E_diamond_novirtual.png)
+
+![](/assets/img/virtual/0x3F_diamond_novirtual_memory.png)
+
+通过内存发现，```CFurnitrue```的数据成员在```CFofaBed```的内存中出现了两次，这就有一些疑问了，```CFofaBed```在使用它可以访问的```CFurnitrue```数据成员时到底去访问哪个？这个疑问留到下一节来探索
+
+有虚函数时```CSofaBed```内存情况：
+
+![](/assets/img/virtual/0x3D_diamond_virtual.png)
+
+![](/assets/img/virtual/0x3E_diamond_virtual_memory.png)
+
+内存中多了两张虚表，毫无疑问，这和多重继承的情况一样
+
+- 第一张虚表：
+
+    ![](/assets/img/virtual/0x41_diamond_destruct.png)
+
+    ![](/assets/img/virtual/0x42_diamond_getColor.png)
+
+    ![](/assets/img/virtual/0x43_diamond_site.png)
+
+    ![](/assets/img/virtual/0x44_diamond_lie.png)
+
+    仔细观察就会发现，这其实就是一个三层继承的虚表
+
+- 第二张虚表：
+
+    ![](/assets/img/virtual/0x45_diamond_destruct .png)
+
+    ![](/assets/img/virtual/0x46_diamond_getColor.png)
+
+    ![](/assets/img/virtual/0x47_diamond_sleep.png)
+
+将这两张虚表和多重继承的一对比就会发现就是多重继承的虚表中多了一个```CFurnitrue```类的虚函数
+
+#### 问题分析
+
+接上边的疑问，首先子类内存中有两个```m_nColor```的数据，两个虚表中还各有一个```getColor()```虚函数地址，那分别访问这两个会出现什么问题？
+
+- 测试：
+
+    ```cpp
+    CSofaBed test;
+    test.getColor();
+    ```
+    
+    报```getColor();```二义性错误
+
+- 测试：
+
+    在```CSofaBed```中覆盖```getColor()```，再次调用：
+
+    报```return m_nColor;```二义性错误
+
+- 测试：
+
+    在```CSofaBed```中覆盖```m_nColor```和```getColor()```，再次调用：
+
+    正常
+
+三次测试，前两次错误，最后一次正确，但就算最后一次正确了，结果也不是我们想要的，因为在内存中```CSofaBed```的```m_nColor```和```CFurnitrue```的```m_nColor```不是同一个（回顾前面描述的数据成员在继承中的表现）
+
+另外，就算通过一些方法避免了上面的错误，但是内存中出现了很多冗余，这是不希望发生地事情
+
+### 虚继承
+
+#### 声明方法
+
+为了解决上面遇到的问题```C++```提供了一个虚继承的方法：在继承父类的声明前加```virtual```关键字：
+
+```cpp
+class CSofa
+  : virtual pubilc CFurnitrue
+{};
+
+class CBed
+  : virtual pubilc CFurnitrue
+{};
+```
+
+为什么要加在```CSofa```和```CBed```继承```CFurnitrue```声明前呢？
+
+我们回顾一下前面菱形继承的内存情况，冲突是发生在这两个类继承了```CFurnitrue```时，并不是```CSofaBed```继承这两个类时
+
+#### 内存表现
+
+我们来看下这样声明后```CSofaBed```的内存：
+
+- 无虚函数时：
+
+    ![](/assets/img/virtual/0x48_virtual_diamond_novirtual.png)
+
+    在此时的内存中发现```CFurnitrue```的数据成员出现在了整个内存的最后面，并且只有一份
+
+    另外还发现内存中多了两个指针数据，分别查看它们指向的内存发现，指向的内存前4字节都是0（可以不用考虑这4字节的内容），后4字节是一个16进制数字，这是一个偏移值：将这两个值分别与指向偏移值指针地址相加```0x0012FF0C + 0x14 == 0x0012ff20; 0x0012FF14 + 0x0C == 0x0012FF20;```得到的都是```CFurnitrue```数据成员在```CSofaBed```内存中的首地址
+
+    所以编译器一定是在背后通过地址的偏移来获得菱形虚继承最顶端类的数据成员地址，然后再进行相应的操作，从而避免了数据冗余。
+
+    为什么有两个偏移值呢？因为时两个类继承了```CFurnitrue```然后```CSofaBed```再继承这两个类，回顾多重继承时，将子类指针转换为不同父类指针后发现有一个父类指针是经过偏移的地址，说明在菱形继承中将子类指针转换为中间两个父类指针时其中一个父类指针也会进行编译操作，因此这里写了两个偏移值，以保证通过中间两个父类指针操作子类对象不会出错
+
+- 有虚函数时：
+
+    ![](/assets/img/virtual/0x4A_virtual_diamond_virtual.png)
+    ![](/assets/img/virtual/0x4B_virtual_diamond_virtual.png)
+    ![](/assets/img/virtual/0x4C_virtual_diamond_virtual.png)
+
+    这个内存结构就比较奇怪了，相比上面没有虚函数的内存结构，我们发现，除了每个指向偏移值地址的指针上面分别多了一个地址外，父类数据成员前面也多了一个指针
+
+    首先我们看偏移地址：（偏移地址前面4字节的0变成了0xFFFFFFC，还是看不出这4字节代表什么，我们暂且认为它代表有没有虚函数）将两个偏移值分别和指向偏移值指针地址相加```0x0012FF04 + 0x18 == 0x0012FF1C; 0x0012FF10 + 0x0C == 0x0012FF1C;```得到的结果是父类数据成员前面哪个地址值的首地址（间接说明这个新出现的地址值属于```CFurnitrue```类的内容）
+
+    这时来看指向偏移值地址的指针上面的那个指针，发现它们分别指向一块儿存函数地址的空间，所以这个指针就是虚表指针了，指向的地址的内容就是虚表了（再看一眼父类数据成员前面的指针，它也是虚表指针）。但是我们看到前两个虚表指针指向的虚表的形态除了没有虚析构的地址，其他内容都和多重继承中两个虚表的内容一样。那虚析构去哪儿了呢？
+    
+    再看第三张虚表，发现，虚析构在了这里！并且```CFurnitrue```的虚函数地址也在这里！说明这里代表的是```CFurnitrue```的虚表了，所以经过偏移值偏移到这里就一点都不奇怪了。另外，```CSofaBed```的析构存在这里也说明整个类在构建过程中（进入不同的构造、析构时）这里的虚表指针都会指向当时操作对应的类的虚表（这张虚表主要存储的是对应类的虚析构地址，和```CFurnitrue```的虚函数地址）（这里要跟的内存太多了，一个个截图有些吃不消就不放截图了，感兴趣的话自己跟一下内存 ^_^）
+
+    如果```CSofaBed```覆盖了```CFurnitrue```的方法会出现在哪张虚表中？看内存图揭晓答案：
+
+    ![](/assets/img/virtual/0x4D_virtual_diamond_sofabed.png)
+
+- 只有虚析构时：
+
+    ![](/assets/img/virtual/0x49_virtual_diamond_onlyvirtual.png)
+
+    首先我们看到这时的内存那情况仅仅比没有一个虚函数的情况多了一个指针数据，而且偏移值上面4字节的内容也是0。这个指针数据肯定是用来存虚析构的虚表了，结合上面有虚函数的内存分析就清楚这里的确只需要一张虚表就够了
 
 # 总结
