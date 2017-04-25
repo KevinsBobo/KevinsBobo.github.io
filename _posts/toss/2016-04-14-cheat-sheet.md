@@ -17,3 +17,5 @@ category: 偷懒必须先勤快
 黑白版适合打印，彩色版适合屏幕
 
 祝大家使用愉快^_^
+
+[下载地址](https://github.com/KevinsBobo/cheat-sheet/)
