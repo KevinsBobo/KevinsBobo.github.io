@@ -10,6 +10,7 @@ category: 学习日志
 
 ## 2017年4月24日
 + 写了一篇长文[《探索C++虚函数在内存中的表现形式及运行机制》](https://kevins.pro/virtual_principle.html)
++ C++模板继承、文件操作、输出输出流结构
 
 ---
 
