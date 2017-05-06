@@ -8,6 +8,11 @@ category: 学习日志
 
 ---
 
+## 2017年5月6日
++ 人生苦短。。。Python。。。
+
+---
+
 ## 2017年4月27日 - 5月1日
 
 + 吃豆人游戏终于做完啦 - [Game Code](https://github.com/KevinsBobo/pacman)
