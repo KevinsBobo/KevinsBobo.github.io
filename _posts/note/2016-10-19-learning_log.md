@@ -8,6 +8,11 @@ category: 学习日志
 
 ---
 
+## 2017年5月12日
++ 发现一个虚函数的小坑 - [Link](https://kevins.pro/virtual_principle.html)
+
+---
+
 ## 2017年5月9日
 + 继线索二叉树之后，现在开始研究平衡二叉树了
 
