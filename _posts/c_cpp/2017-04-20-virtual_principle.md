@@ -751,6 +751,8 @@ pSoldierA->funTest();
 
 结合之前对于继承后的类内存的分析再强调一下：父类的所有数据成员都会出现在子类的内存中，无论有没有被覆盖
 
+2017-05-12补充：但是要注意，在通过父类指针调用子类覆盖父类的非虚函数（无多态性）时，这个非虚函数获取到的数据成员还是父类的！具体例子可以看文章后面补充的那个问题里面数据成员的表现
+
 # 在复杂情况下编译器对虚函数（虚表指针、虚表）的实现
 
 ## 构造和析构时编译器对多态性的约束
@@ -1177,3 +1179,120 @@ class CBed
     ![](/assets/img/virtual/0x4E_ios_inherit.png)
 
 不过在开发中，程序写的不合理所带来的开销远远大于使用虚函数时的开销。但是如果可以不需要虚函数就可以实现的功能（比如说通过组合来实现上面沙发床的功能），就尽量不要使用继承了，多写些代码就能提高效率，又避免了继承的问题，也是不错的。
+
+# 补充一个有趣的小坑
+
+> 2017-05-12: 听说在子类的构造中主动调自己的析构，虚表指针会抽风。。。
+
+## 问题描述
+
+直接上代码：
+
+```cpp
+#include <iostream>
+
+class CBase
+{
+public:
+  CBase()
+    : m_nData(0)
+  {
+    std::cout << "CBase()" << std::endl;
+  }
+  
+  virtual ~CBase()
+  {
+    std::cout << "~CBase()" << std::endl;
+  }
+    
+  virtual void echoData()
+  {
+    std::cout << "CBase::m_nData = " << m_nData << std::endl;
+  }
+     
+protected:
+  int m_nData;
+};
+
+class CDerive
+  : public CBase
+{
+public:
+  CDerive()
+    : CBase()
+  {
+    m_nData = 10;
+    std::cout << "CDerive()" << std::endl;
+    CDerive::~CDerive(); // 在构造中主动调用析构
+    echoData(); // 在构造中尝试调用一次自己的函数
+    /*
+     * 正常输出应是：CDerive::m_nData = 10
+     */
+  }
+  
+  virtual ~CDerive()
+  {
+    std::cout << "~CDerive()" << std::endl;
+  }
+    
+  virtual void echoData()
+  {
+    std::cout << "CDerive::m_nData = " << m_nData << std::endl;
+  }
+      
+private:
+  int m_nData; // 子类隐藏父类数据成员
+};
+
+int main()
+{
+  CDerive obj;
+  CBase* pBase = &obj;
+
+  pBase->echoData();
+  /*
+   * 正常输出应是：CDerive::m_nData = 10
+   */
+
+  obj.echoData();
+  /*
+   * 正常输出应是：CDerive::m_nData = 10
+   */
+
+  return 0;
+}
+```
+
+** 注意，在子类构造中主动调用了一次自己的析构（调用析构函数并不会对对象的数据成员产生影响） **
+
+实际输出：
+
+![](assets/img/virtual/0x4F_vftab_pit_output.png)
+
+** 看到输出的异常了吧，通过父类指针调用的虚函数竟然还是父类的函数（数据成员的输出也是错误的），所以在这里并没有多态性！ **
+
+## 原因分析
+
+通过上面的例子我们发现，在子类的构造中主动调用了一次自己的析构出现了问题，那么我们来看看这个过程中虚表发生的变化：
+
+根据前面的分析我们知道虚表指针会在进入析构的时候刷新一次，并且调用子类的析构后还会调用其父类的析构
+
+现在在子类构造中调用自己的析构，单步分析：
+
+- 单步进入子类析构，查看内存：
+
+    ![](assets/img/virtual/0x50_vftab_pit_vfptr_pre.png)
+
+    虚表表指针是正确的
+
+- 然后单步进入父类析构，查看内存：
+
+    ![](assets/img/virtual/0x50_vftab_pit_vfptr_base.png)
+
+    也是正常的
+
+- 离开父类析构，回到子类构造时，再查看内存（** 和上图结果一模一样！ **）
+
+现在问题清楚了，原来是在子类构造中调用自已的析构，虚表指针会在对应的析构中动态变化，而到了最后一层父类析构中刷新为该父类的虚表指针后再离开该析构函数后虚表指针并没有变回子类的（这是可以理解的，因为需要用到析构时肯定是对象要销毁时，所以没必要在离开最后一层父类析构时再将虚表指针刷回父类）
+
+ps: 正常情况下是不会发生上面的情况的，因为谁会没事儿调自己的析构呢，哈哈
