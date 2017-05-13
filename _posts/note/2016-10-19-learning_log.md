@@ -8,6 +8,11 @@ category: 学习日志
 
 ---
 
+## 2017年5月13日
++ 多思考、多动手
+
+---
+
 ## 2017年5月12日
 + 发现一个虚函数的小坑 - [Link](https://kevins.pro/virtual_principle.html)
 
