@@ -10,7 +10,7 @@ category: wireshark
 
 github: https://github.com/KevinsBobo/wireshark-modify
 
-> tshark 是 wireshark 的命令行版，所以修改起来更加容易 ^_^
+> tshark 是 wireshark 的命令行版，所以修改起来更加容易 ^_^<br>其实直接在wireshark的底层解析函数里做保存图片更容易，而且GUI版本也可以用，但是出于想了解wireshark解析库的调用方法，所以就在tshark中搞了
 
 * TOC
 {:toc}
@@ -65,7 +65,7 @@ main()
 
 1. 通过vs2013下`fprintf()`API断点并通过栈回溯分析函数调用情况(因为tshark是通过`fprintf`输出数据的)
 
-2. 通过API断电发现了`print_columns()`的输出`HTTP`状态的位置
+2. 通过API断点发现了`print_columns()`的输出`HTTP`状态的位置
 
 ### 分析数据包时调试
 
