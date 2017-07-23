@@ -365,7 +365,7 @@ process_packet(capture_file *cf, epan_dissect_t *edt, gint64 offset, struct wtap
  
 ### 在捕获数据包同时保存图片
 
-![](/assets/img/wireshark/tshark_add_save_pic_2.png)
+![](/assets/img/wireshark/tshark_add_save_pic_2.jpg)
  
 ### png 图片
 
