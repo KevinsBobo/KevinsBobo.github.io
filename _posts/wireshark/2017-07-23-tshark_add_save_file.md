@@ -2,7 +2,7 @@
 layout: default
 comments: true
 verifid: 2017072301
-title: 为tshrak增加保存图片功能
+title: 为tshrak增加保存http图片、音乐功能
 category: wireshark
 ---
 
@@ -10,7 +10,9 @@ category: wireshark
 
 github: https://github.com/KevinsBobo/wireshark-modify
 
-> tshark 是 wireshark 的命令行版，所以修改起来更加容易 ^_^<br>其实直接在wireshark的底层解析函数里做保存图片更容易，而且GUI版本也可以用，但是出于想了解wireshark解析库的调用方法，所以就在tshark中搞了<br>wireshark版本：2.2.0
+> tshark 是 wireshark 的命令行版，所以修改起来更加容易 ^_^<br>其实直接在wireshark的底层解析函数里做保存图片更容易，而且GUI版本也可以用，但是出于想了解wireshark解析库的调用方法，所以就在tshark中搞了<br>wireshark版本：2.2.0 平台：vs2013
+
+> 2017.7.31更新：新增保存mp3音乐功能，并重构代码
 
 * TOC
 {:toc}
@@ -80,21 +82,21 @@ main()
 
 ## 保存图片新增代码
 
-> 注：在tshark原代码中新增的代码都以`/* 保存图片新增 start */ ... /* 保存图片新增 stop */`的形式标注<br>调试新增代码都以`/* 调试新增 start */ ... /* 调试新增 stop */`的形式标注<br><br>为方便管理，新增代码的实现和声明放在了单独的`kevins-....c`和`kevins-....h`文件中，位于wireshark源码目录的`kevins`目录中<br>所有函数和全局变量均以`kevins-...`开头
+> 注：在tshark原代码中新增的代码都以`/* 保存图片新增 start */ ... /* 保存图片新增 stop */`的形式标注<br>调试新增代码都以`/* 调试新增 start */ ... /* 调试新增 stop */`的形式标注<br><br>为方便管理，新增代码的实现和声明放在了单独的`addsave-....c`和`addsave-....h`文件中，位于wireshark源码目录的`addsave`目录中<br>所有函数和全局变量均以`addsave-...`开头
 
-### kevins-file.h
+### addsave-file.h
 
 > 这里的函数是文件相关的，一个实创建目录，一个是初始化文件，没什么说的
 
 ```cpp
-#define KEVINS_MAXPATHLEN 255
+#define ADDSAVE_MAXPATHLEN 255
 
-void kevins_init_floder(char* szFloder);
+void addsave_init_floder(char* szFloder);
 
-int kevins_init_file(char* szFile);
+int addsave_init_file(char* szFile);
 ```
 
-### kevins-save-pic.h
+### addsave-save.h
 
 > 这是保存图片的主要代码
 
@@ -105,61 +107,72 @@ int kevins_init_file(char* szFile);
 
 /* 新增的头文件 start */
 #include <epan/tvbuff-int.h>
-#include <kevins/kevins-file.h>
+#include <addsave/addsave-file.h>
 /* 新增的头文件 stop */
 
 // 图片根目录
-#define KEVINS_PIC_FLODER_NAME "d:\\kevins_save_pic\\"
+#define ADDSAVE_FILE_FLODER_NAME "..\\addsave_save\\" 
 // 图片名前缀
-#define KEVINS_PIC_FILE_NAME "save_pic"
+#define ADDSAVE_FILE_NAME "save_file"
 
 // 全局变量 标记数据包是否为图片
-extern int kevins_g_is_pic;
+extern int addsave_g_is_savefile;
 // 全局变量 标记数据包来源IP
-extern char kevins_g_src_ip[ KEVINS_MAXPATHLEN ];
+extern char addsave_g_src_ip[ ADDSAVE_MAXPATHLEN ];
 
-// 全局变量 标记数据包来源IP
-#define KEVINS_PIC_JPG 1
-#define KEVINS_PIC_PNG 2
-#define KEVINS_PIC_GIF 3
+// 图片类型
+#define ADDSAVE_PIC_JPG 1
+#define ADDSAVE_PIC_PNG 2
+#define ADDSAVE_PIC_GIF 3
+#define ADDSAVE_FILE_AUDIO 4
 
 // 主要功能函数
-void kevins_save_pic(epan_dissect_t * edt);
+void addsave_save_pic(epan_dissect_t * edt);
 ```
 
-### kevins-save-pic.c
+### addsave-save.c
 
 > 实现代码
 
 ```cpp
-#include <kevins/kevins-save-pic.h>
-int kevins_g_is_pic = 0;
-char kevins_g_src_ip[ KEVINS_MAXPATHLEN ];
-void kevins_save_pic(epan_dissect_t * edt)
+#include <addsave/addsave-save.h>
+
+int addsave_g_is_savefile = 0;
+char addsave_g_src_ip[ ADDSAVE_MAXPATHLEN ];
+
+void addsave_save_pic(epan_dissect_t * edt)
 {
   if(edt == NULL)
   {
     return ;
   }
-  char szPicPath[ MAXPATHLEN ] = { 0 };
+
+  char szFilePath[ MAXPATHLEN ] = { 0 };
+  char* pszFileType = NULL;
   tvbuff_t * tvb = NULL;
   u_char* pData = NULL;
   unsigned long long *pVerify = NULL;
   FILE* fpPic = NULL;
-  static int g_kevins_save_pic_time = 0;
+  time_t save_time = 0;
+  time(&save_time);
+  static int nTime = 0;
   const guchar *cp = NULL;
   guint         length = 0;
+
   // gboolean      multiple_sources;
   GSList       *src_le = NULL;
   struct data_source *src = NULL;
-  
-  // 将 tvb 指针移动到合适的位置
+
+
+  // 将 tvb 指针移动到合适的位置 
   for( tvb = edt->tvb ; tvb != NULL; tvb = tvb->next)
   {
     // 可以确定 jgp/gif 图片肯定在最后一个数据包
     // PNG 图片在倒数第六个数据包
     // 所以直接将 jpg/gif 的指针移到最后一个数据包的位置
-    if(((kevins_g_is_pic == KEVINS_PIC_JPG || kevins_g_is_pic == KEVINS_PIC_GIF)
+    if(((addsave_g_is_savefile == ADDSAVE_PIC_JPG
+      || addsave_g_is_savefile == ADDSAVE_PIC_GIF
+      || addsave_g_is_savefile == ADDSAVE_FILE_AUDIO)
          && tvb->next != NULL))
     {
       continue;
@@ -169,19 +182,22 @@ void kevins_save_pic(epan_dissect_t * edt)
     {
       return ;
     }
-   
+
     // jpg 数据首地址在最后一个数据包地址的前两个字节的位置，png 和 gif 则正常
-    pData = (unsigned char*)(tvb->real_data) - 2;
+    pData = (unsigned char*)(tvb->real_data);
     pVerify = (unsigned long long*)tvb->real_data;
     // 再次判断，匹配则跳出循环，按照逻辑只有png才会多次判断
-    if((*(unsigned short*)pData == 0xD8FF && *pVerify == 0x4649464A1000E0FF)                 // jpg
-       || (*(unsigned long long*)(pData + 2) == 0x0A1A0A0D474E5089)                          // png
-       || (((*(unsigned long long*)(pData + 2)) & 0x0000FFFFFFFFFFFF) == 0x0000613938464947) // gif
+    if((*(unsigned short*)(pData - 2) == 0xD8FF && *pVerify == 0x4649464A1000E0FF)       // jpg
+       || (*(unsigned long long*)(pData) == 0x0A1A0A0D474E5089)                          // png
+       || (((*(unsigned long long*)(pData)) & 0x0000FFFFFFFFFFFF) == 0x0000613938464947) // gif
+       || addsave_g_is_savefile == ADDSAVE_FILE_AUDIO   // audio 类型直接跳出
        )
     {
       break;
     }
   }
+
+
   /* 参考自 print.c -> print_hex_data 函数 */
   // 获取数据长度 和 http 数据包首部指针
   for(src_le = edt->pi.data_src; src_le != NULL;
@@ -191,6 +207,7 @@ void kevins_save_pic(epan_dissect_t * edt)
     {
       continue;
     }
+
     src = (struct data_source *)src_le->data;
     tvb = get_data_source_tvb(src);
     length = tvb_captured_length(tvb);
@@ -203,50 +220,62 @@ void kevins_save_pic(epan_dissect_t * edt)
     {
       return ;
     }
+
     break;
   }
-  if(kevins_g_is_pic == KEVINS_PIC_JPG)
-  {
-    sprintf_s(szPicPath , MAXPATHLEN , "%s%s\\jpg\\" ,
-              KEVINS_PIC_FLODER_NAME , kevins_g_src_ip);
-    // 创建文件夹
-    kevins_init_floder(szPicPath);
-    sprintf_s(szPicPath , MAXPATHLEN , "%s%s\\jpg\\%s%d.jpg" ,
-              KEVINS_PIC_FLODER_NAME , kevins_g_src_ip, KEVINS_PIC_FILE_NAME, g_kevins_save_pic_time++);
-  }
-  else if(kevins_g_is_pic == KEVINS_PIC_PNG)
+
+  if(addsave_g_is_savefile == ADDSAVE_PIC_JPG)
   {
     // 偏移指针
-    pData += 2;
-    sprintf_s(szPicPath , MAXPATHLEN , "%s%s\\png\\" ,
-              KEVINS_PIC_FLODER_NAME , kevins_g_src_ip);
-    // 创建文件夹
-    kevins_init_floder(szPicPath);
-    sprintf_s(szPicPath , MAXPATHLEN , "%s%s\\png\\%s%d.png" ,
-              KEVINS_PIC_FLODER_NAME , kevins_g_src_ip, KEVINS_PIC_FILE_NAME, g_kevins_save_pic_time++);
+    pData -= 2;
+    pszFileType = "jpg";
   }
-  else if(kevins_g_is_pic == KEVINS_PIC_GIF)
+  else if(addsave_g_is_savefile == ADDSAVE_PIC_PNG)
   {
-    // 偏移指针
-    pData += 2;
-    sprintf_s(szPicPath , MAXPATHLEN , "%s%s\\gif\\" ,
-              KEVINS_PIC_FLODER_NAME , kevins_g_src_ip);
-    // 创建文件夹
-    kevins_init_floder(szPicPath);
-    sprintf_s(szPicPath , MAXPATHLEN , "%s%s\\gif\\%s%d.gif" ,
-              KEVINS_PIC_FLODER_NAME , kevins_g_src_ip, KEVINS_PIC_FILE_NAME, g_kevins_save_pic_time++);
+    pszFileType = "png";
   }
-  // 创建文件
-  if(kevins_init_file(szPicPath))
+  else if(addsave_g_is_savefile == ADDSAVE_PIC_GIF)
+  {
+    pszFileType = "gif";
+  }
+  else if(addsave_g_is_savefile == ADDSAVE_FILE_AUDIO)
+  {
+    pszFileType = "mp3";
+  }
+
+  if(pszFileType == NULL)
   {
     return ;
   }
+
+  sprintf_s(szFilePath , MAXPATHLEN , "%s%s\\%s\\" ,
+            ADDSAVE_FILE_FLODER_NAME , addsave_g_src_ip, pszFileType);
+  // 创建文件夹
+  addsave_init_floder(szFilePath);
+
+  sprintf_s(szFilePath ,
+            MAXPATHLEN ,
+            "%s%s\\%s\\%s_%lld.%s" ,
+            ADDSAVE_FILE_FLODER_NAME ,
+            addsave_g_src_ip,
+            pszFileType ,
+            ADDSAVE_FILE_NAME,
+            save_time + nTime++,
+            pszFileType);
+
+  // 创建文件
+  if(addsave_init_file(szFilePath))
+  {
+    return ;
+  }
+
   // 打开文件
-  fopen_s(&fpPic , szPicPath , "wb");
+  fopen_s(&fpPic , szFilePath , "wb");
   if(fpPic == NULL)
   {
     return ;
   }
+
   // 获取文件长度
   u_int pic_length = length - (pData - cp);
   
@@ -262,12 +291,12 @@ void kevins_save_pic(epan_dissect_t * edt)
 
 #### 头文件
 
-> 将`kevins-....c`文件加入到tshark项目工程中并包含新增代码的头文件
+> 将`addsave-....c`文件加入到tshark项目工程中并包含新增代码的头文件
 
 ```cpp
 /* 保存图片新增 start */
-#include <kevins/kevins-save-pic.h>
-#include <kevins/kevins-file.h>
+#include <addsave/addsave-save.h>
+#include <addsave/addsave-file.h>
 /* 保存图片新增 stop */
 ```
 
@@ -289,7 +318,7 @@ print_columns(capture_file *cf)
       line_bufp = get_line_buf(buf_offset + column_len);
       put_spaces_string(line_bufp + buf_offset, col_item->col_data, col_len, column_len);
       /* 保存图片新增 start */
-      strcpy_s(kevins_g_src_ip , KEVINS_MAXPATHLEN , col_item->col_data);
+      strcpy_s(addsave_g_src_ip , ADDSAVE_MAXPATHLEN , col_item->col_data);
       /* 保存图片新增 stop */
       break;
     ...
@@ -300,21 +329,26 @@ print_columns(capture_file *cf)
       /* 保存图片新增 start */
       if(!strcmp(col_item->col_data , "HTTP/1.1 200 OK  (JPEG JFIF image)"))
       {
-        kevins_g_is_pic = KEVINS_PIC_JPG;
+        addsave_g_is_savefile = ADDSAVE_PIC_JPG;
       }
       else if(!strcmp(col_item->col_data , "HTTP/1.1 200 OK  (PNG)"))
       {
-        kevins_g_is_pic = KEVINS_PIC_PNG;
+        addsave_g_is_savefile = ADDSAVE_PIC_PNG;
       }
       else if(!strcmp(col_item->col_data , "HTTP/1.1 200 OK  (GIF89a)")
               || !strcmp(col_item->col_data , "HTTP/1.1 200 OK  (GIF89a) (image/jpeg)"))
       {
-        kevins_g_is_pic = KEVINS_PIC_GIF;
+        addsave_g_is_savefile = ADDSAVE_PIC_GIF;
+      }
+      else if(!strcmp(col_item->col_data , "HTTP/1.1 206 Partial Content  (audio/mpeg)")
+              || !strcmp(col_item->col_data , "HTTP/1.0 206 Partial Content  (audio/mpeg)"))
+      {
+        addsave_g_is_savefile = ADDSAVE_FILE_AUDIO;
       }
       else
       {
         // 保险措施
-        kevins_g_is_pic = 0;
+        addsave_g_is_savefile = 0;
       }
       /* 保存图片新增 stop */
 ```
@@ -340,32 +374,56 @@ process_packet(capture_file *cf, epan_dissect_t *edt, gint64 offset, struct wtap
       print_packet(cf, edt);
  
       /* 保存图片新增 start */
-      if(kevins_g_is_pic)
+      if(addsave_g_is_savefile)
       {
-        kevins_save_pic(edt);
-        kevins_g_is_pic = 0;
+        addsave_save_pic(edt);
+        addsave_g_is_savefile = 0;
       }
       /* 保存图片新增 stop */
   ...
 
   /* 保存图片新增 start */
   // 保险措施，标志位置 0
-  kevins_g_is_pic = 0;
+  addsave_g_is_savefile = 0;
   /* 保存图片新增 start */
  
   return passed;
 }
 ```
 
+## 使用方法
+
+### 编译
+
+1. 将`addsave`文件夹拷贝到`wirshark`源码目录中
+
+2. 替换`tshark.c`文件
+
+3. 打开`wirshark`vs2013解决方案
+
+4. 将`addsave`中的`addsave-save.c`和`addsave-file.c`添加到`tshark`项目`Soure Files`中
+
+5. 重新编译`tshark`
+
+### 使用
+
+1. 捕获网卡信息流时保存`tshark src port 80`
+
+2. 从`.pcap`文件中保存文件`tshark -r out.pcap -Y http`
+
+3. 保存的文件在执行目录的上级目录中的`addsave_save`目录中按照IP和文件类型分文件夹保存
+
 ## 效果展示
 
 ### 从已经捕获的数据包中抓取图片
 
-> `tshark -r out.pcap`
+> `tshark -r out.pcap -Y http`
 
 ![](/assets/img/wireshark/tshark_add_save_pic_1.png)
  
 ### 在捕获数据包同时保存图片
+
+> `tshark src port 80`
 
 ![](/assets/img/wireshark/tshark_add_save_pic_2.jpg)
  
