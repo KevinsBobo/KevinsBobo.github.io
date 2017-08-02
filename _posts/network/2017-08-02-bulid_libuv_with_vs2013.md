@@ -14,6 +14,8 @@ category: 网络相关
 
 ## 修改`vcbuild.bat`
 
+> 手动下载gyp才需要这一步
+
 删掉`125-128`行
 
 ```bat
