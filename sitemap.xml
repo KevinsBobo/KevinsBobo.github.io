@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>https://kevins.pro/libuv+curl_realize_multi_http_req.html</loc>
+        <lastmod>2017-08-07T23:02:00+08:00</lastmod>
+    </url>
+    <url>
         <loc>https://kevins.pro/bulid_libuv_with_vs2013.html</loc>
         <lastmod>2017-08-02T22:02:00+08:00</lastmod>
     </url>
