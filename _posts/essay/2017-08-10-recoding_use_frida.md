@@ -65,11 +65,11 @@ def main(target_process):
     print(session.enumerate_modules())
     # 枚举内存范围
     print(session.enumerate_ranges('rw-'))
-    # 写内存 write_bytes(address, data)
-    # 没有写成功，错误:frida.core.RPCException: Error: expected an integer
-    session.write_bytes(0x663000, "\1\2\3\4")
     # 读内存 read_bytes(address, bytes)
-    print(session.read_bytes(0x663000, 4))
+    print(hex(session.read_bytes(0x00403616, 1)[0]))
+    # 写内存 write_bytes(address, data)
+    # 错误 frida.core.RPCException: Error: access violation accessing 0x403616
+    session.write_bytes(0x00403616, b'0xeb')    
 
 if __name__ == '__main__':
     # 进程PID
