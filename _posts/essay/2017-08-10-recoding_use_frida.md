@@ -17,7 +17,7 @@ category: 随笔
 
 ## 2. 安装完成测试
 
-> linux 在运行脚本前需要执行这条命令:`sudo sysctl kernel.yama.ptrace_scope=0`（该命令的作用是临时的），否则必须通过`root`权限运行，这样不便于脚本的调试
+> linux 在以普通用户身份运行脚本前需要执行这条命令:`sudo sysctl kernel.yama.ptrace_scope=0`（该命令的作用是临时的），否则必须通过`root`身份运行，这样不便于后期脚本的调试
 
 命令 `frida-trace -i "recv*" -i "read*" *calc*`
 
@@ -90,6 +90,8 @@ Python API 较为简单，重点是和JavaScript通信的消息回调
 ### 小总结
 
 - 牛逼的一点：可以hook任何API或程序内部函数，调用其任意函数（对于thiscall和寄存器传参的函数还没有验证）并获取及改变其参数
+
+- 在`win`下，注入的`DLL`文件是一个命名为`frida-agent-xx.dll`，在`Linux`下注入的`so`文件则命名为`frida-angent-xx.so'，所以可以理解为写的`js`脚本最终是通过这些代理来执行相应操作的
 
 - 对于注入的js脚本在宿主进程中不能执行太多操作或运算，否则会影响宿主进程的效率或运行（猜测），而通过`send(...)/recv(...)`的方式和py脚本进行`异步`通信，py脚本操作或运算完再将结果发送给js脚本，此时js脚本根据结果再执行响应操作或直接将结果写入宿主进程内存中
 
