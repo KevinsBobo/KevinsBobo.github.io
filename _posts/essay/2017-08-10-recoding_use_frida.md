@@ -69,6 +69,7 @@ def main(target_process):
     print(hex(session.read_bytes(0x00403616, 1)[0]))
     # 写内存 write_bytes(address, data)
     # 错误 frida.core.RPCException: Error: access violation accessing 0x403616
+    # 用 js 脚本的方式写内存也是同样地错误
     session.write_bytes(0x00403616, b'0xeb')    
 
 if __name__ == '__main__':
