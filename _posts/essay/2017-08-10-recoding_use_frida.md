@@ -70,6 +70,8 @@ def main(target_process):
     # 写内存 write_bytes(address, data)
     # 错误 frida.core.RPCException: Error: access violation accessing 0x403616
     # 用 js 脚本的方式写内存也是同样地错误
+    # 但 js 脚本在写内存前调用 Memory.protect(ptr("0x00403616"), 8, 'rw-'); 就没问题
+    # 而 py 脚本没有这个 API
     session.write_bytes(0x00403616, b'0xeb')    
 
 if __name__ == '__main__':
@@ -87,6 +89,8 @@ Python API 较为简单，重点是和JavaScript通信的消息回调
 ### JavaScript
 
 对进程的主要操作都在js脚本中
+
+- 写内存前要先修改内存属性 `Memory.protect(ptr("0x00403616"), 8, 'rw-');`
 
 ### 小总结
 
