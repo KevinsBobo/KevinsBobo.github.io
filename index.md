@@ -7,6 +7,8 @@ title: KevinsBobo - Coding博客
 
 ---
 
+<img src = "assets/img/9348be98ed46c1cd972743184b76fe73.png" />
+
 ## 文章目录
 
 {% for category in site.categories %}
@@ -15,6 +17,6 @@ title: KevinsBobo - Coding博客
 {% for post in category.last %}
 <li><h4>{{ post.date | date: '%b %Y' }} <a href="{{ post.url }}">{{ post.title }}</a></h4></li>
 {% endfor %}
-</ul>
+:wq
 {% endfor %}
 
