@@ -173,7 +173,7 @@ Python API 较为简单，重点是和JavaScript通信的消息回调
     - Windows 64-bit:
         -  win64
     - UNIX x86:
-   -  sysv
+        -  sysv
         -  unix64
     - UNIX ARM:
         -  sysv
