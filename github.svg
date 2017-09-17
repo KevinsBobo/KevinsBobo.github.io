@@ -474,7 +474,8 @@
           <rect class="day" width="10" height="10" x="-39" y="24" fill="#ebedf0" data-count="0" data-date="2017-09-12"/>
           <rect class="day" width="10" height="10" x="-39" y="36" fill="#c6e48b" data-count="2" data-date="2017-09-13"/>
           <rect class="day" width="10" height="10" x="-39" y="48" fill="#ebedf0" data-count="0" data-date="2017-09-14"/>
-          <rect class="day" width="10" height="10" x="-39" y="60" fill="#ebedf0" data-count="0" data-date="2017-09-15"/>
+          <rect class="day" width="10" height="10" x="-39" y="60" fill="#7bc96f" data-count="4" data-date="2017-09-15"/>
+          <rect class="day" width="10" height="10" x="-39" y="72" fill="#ebedf0" data-count="0" data-date="2017-09-16"/>
       </g>
   </g>
 </svg>
