@@ -9,6 +9,8 @@ category: 偷懒必须先勤快
 ### Author Kevins Bobo
 
 <iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=cheat-sheet&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+[github code - https://github.com/KevinsBobo/cheat-sheet/](https://github.com/KevinsBobo/cheat-sheet/)
+
 
 速查表包括了 Vim, Git, Shell, Gcc, Gdb 常用命令及快捷键
 

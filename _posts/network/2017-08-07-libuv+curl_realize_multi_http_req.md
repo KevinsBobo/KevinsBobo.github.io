@@ -8,7 +8,7 @@ category: 网络相关
 
 <iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=curl_multi&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 
-[github code](https://github.com/KevinsBobo/curl_multi)
+[github code - https://github.com/KevinsBobo/curl_multi](https://github.com/KevinsBobo/curl_multi)
 
 > 关于libcurl+libuv实现异步http请求的简单例子可以参考：http://blog.csdn.net/lijinqi1987/article/details/53996129<br><br>开发环境：win7, vs2013
 
