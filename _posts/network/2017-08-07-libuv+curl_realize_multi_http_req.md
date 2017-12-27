@@ -6,11 +6,13 @@ layout: default
 category: 网络相关
 ---
 
+
+> 关于libcurl+libuv实现异步http请求的简单例子可以参考：http://blog.csdn.net/lijinqi1987/article/details/53996129<br><br>开发环境：win7, vs2013
+
+
 <iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=curl_multi&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 
 [github code - https://github.com/KevinsBobo/curl_multi](https://github.com/KevinsBobo/curl_multi)
-
-> 关于libcurl+libuv实现异步http请求的简单例子可以参考：http://blog.csdn.net/lijinqi1987/article/details/53996129<br><br>开发环境：win7, vs2013
 
 
 ## libuv使用流程
@@ -56,7 +58,7 @@ category: 网络相关
 
 对一个小型网站进行注册测试：
 
-- 开1000个并发连接，一共1万×5次请求（不包括30X重定向产生的请求），速度局限于对方服务器和网速，显得比较慢，而且这么多并发，直接导致对方服务器无响应了，注册失败几率很高，并且在测试期间，通过浏览器很难访问这个网站，而本机CPU占用率很低，在这种情况下无法测出性能的极限
+- 开1000个并发连接，一共1万×5次请求（不包括30X重定向产生的请求），速度局限于对方服务器和网速，显得比较慢，而且这么多并发，直接导致对方服务器无响应了，失败几率很高，并且在测试期间，通过浏览器很难访问这个网站，而本机CPU占用率很低，在这种情况下无法测出性能的极限
 
 ## vs2013环境下编译libuv
 
