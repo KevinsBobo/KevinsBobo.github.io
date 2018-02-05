@@ -9,7 +9,7 @@ category: wireshark
 <iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=wireshark-modify&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 
 
-**本文最新版发布在了看雪论坛，请移步到：[https://bbs.pediy.com/thread-224502.htm](https://bbs.pediy.com/thread-224502.htm)**
+**本文最新版发布在了看雪论坛，请移步到看雪论坛：[https://bbs.pediy.com/thread-224502.htm](https://bbs.pediy.com/thread-224502.htm)**
 
 
 github: https://github.com/KevinsBobo/wireshark-modify
