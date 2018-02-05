@@ -8,6 +8,10 @@ category: wireshark
 
 <iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=wireshark-modify&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 
+
+**本文最新版发布在了看雪论坛，请移步到：[https://bbs.pediy.com/thread-224502.htm](https://bbs.pediy.com/thread-224502.htm)**
+
+
 github: https://github.com/KevinsBobo/wireshark-modify
 
 > tshark 是 wireshark 的命令行版，所以修改起来更加容易 ^_^<br>其实直接在wireshark的底层解析函数里做保存图片更容易，而且GUI版本也可以用，但是出于想了解wireshark解析库的调用方法，所以就在tshark中搞了<br>wireshark版本：2.2.0 平台：vs2013
