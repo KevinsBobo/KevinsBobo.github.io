@@ -3,7 +3,7 @@ layout: default
 comments: true
 verifid: 2017072301
 title: 为tshrak增加保存http图片、音乐功能
-category: wireshark
+category: Wireshark
 ---
 
 <iframe src="//ghbtns.com/github-btn.html?user=KevinsBobo&repo=wireshark-modify&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
