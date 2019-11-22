@@ -1,5 +1,5 @@
 ---
-title: 记录一次安装OpenGrop的心酸历程
+title: 记录一次安装OpenGrok的心酸历程
 comments: true
 verifid: 2016112701
 layout: default
