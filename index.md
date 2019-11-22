@@ -12,7 +12,14 @@ title: KevinsBobo - Coding博客
 ## 文章目录
 
 {% for category in site.categories %}
-{% if category.first != 'hidden' %}
+{% if category.first == 'pediy' %}
+<h3>{{ category | first }} ({{ category | last | size }})</h3>
+<ul>
+{% for post in category.last %}
+<li><h4>{{ post.date | date: '%b %Y' }} <a href="{{ post.reurl }}" target="view_window">{{ post.title }}</a></h4></li>
+{% endfor %}
+</ul>
+{% elsif category.first != 'hidden' %}
 <h3>{{ category | first }} ({{ category | last | size }})</h3>
 <ul>
 {% for post in category.last %}
@@ -21,3 +28,4 @@ title: KevinsBobo - Coding博客
 </ul>
 {% endif %}
 {% endfor %}
+
