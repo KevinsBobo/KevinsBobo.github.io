@@ -17,10 +17,10 @@ title: KevinsBobo - Coding博客
 <ul>
 {% for post in category.last %}
 <li><h4>{{ post.date | date: '%b %Y' }} <a href="{{ post.reurl }}" target="view_window">{{ post.title }}</a></h4></li>
-{% elsif category.first != 'hidden' %}
-<h3>{{ category | first }} ({{ category | last | size }})</h3>
 {% endfor %}
 </ul>
+{% elsif category.first != 'hidden' %}
+<h3>{{ category | first }} ({{ category | last | size }})</h3>
 <ul>
 {% for post in category.last %}
 <li><h4>{{ post.date | date: '%b %Y' }} <a href="{{ post.url }}">{{ post.title }}</a></h4></li>
