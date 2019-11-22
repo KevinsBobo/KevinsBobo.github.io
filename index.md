@@ -12,7 +12,7 @@ title: KevinsBobo - Coding博客
 ## 文章目录
 
 {% for category in site.categories %}
-{% if category.first == 'pediy' %}
+{% if category.first == 'CTF逆向题' or category.first == 'CTF PWN题'  %}
 <h3>{{ category | first }} ({{ category | last | size }})</h3>
 <ul>
 {% for post in category.last %}
