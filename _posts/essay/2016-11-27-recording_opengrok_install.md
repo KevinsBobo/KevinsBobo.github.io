@@ -110,3 +110,4 @@ What?!上面告诉我整个项目是用jdk7编译的，现在这里告诉我这�
 <img src="/assets/img/opengrok_install_success.png" width="100%"/>
 
 虽然折腾大，踩了好多坑，但是收获了OpenGrok这个神器，一切都值！
+
