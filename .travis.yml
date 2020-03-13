@@ -2,6 +2,13 @@ language: ruby
 cache: bundler
 rvm: 2.6
 
+# 缓存，可以节省集成的时间
+cache:
+  apt: true
+  gem: true
+  directories:
+    - node_modules
+    
 before_install:
   - chmod a+x script/bootstrap
   - chmod a+x script/cibuild

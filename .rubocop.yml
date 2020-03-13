@@ -1,6 +1,9 @@
 AllCops:
   Exclude:
     - _site/**/*
+    - articl/*
+    - blog/**/*
+    - 404.html
 
 Metrics/LineLength:
   Enabled: false
