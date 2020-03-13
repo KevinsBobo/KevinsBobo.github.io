@@ -2,11 +2,16 @@ language: ruby
 cache: bundler
 rvm: 2.6
 
+# 缓存，可以节省集成的时间
+cache:
+  apt: true
+  gem: true
+  directories:
+    - node_modules
 before_install:
-  - chmod a+x script/bootstrap
-  - chmod a+x script/cibuild
-  - chmod a+x script/release
-  - chmod a+x script/server
-  - chmod a+x script/validate-html
-install: script/bootstrap
-script: script/cibuild
+  - export TZ='Asia/Shanghai'
+install:
+  - gem install jekyll
+  - gem install jekyll-paginate
+script:
+  - jekyll build
