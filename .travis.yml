@@ -10,6 +10,10 @@ cache:
     - node_modules
     
 before_install:
+  - git config --global user.name "KevinsBobo"
+  - git config --global user.email "kevins.bobo@gmail.com"
+  - export TZ='Asia/Shanghai'
+  - chmod a+x _travis.sh
   - chmod a+x script/bootstrap
   - chmod a+x script/cibuild
   - chmod a+x script/release
@@ -17,3 +21,15 @@ before_install:
   - chmod a+x script/validate-html
 install: script/bootstrap
 script: script/cibuild
+
+env:
+  global:
+    # 修改为自己Github用户名
+    - GH_USER_NAME: KevinsBobo
+    # 修改为自己Github仓库地址
+    - GH_REF: github.com/KevinsBobo/KevinsBobo.github.io.git
+    # 修改为自己Coding用户名
+    - CODING_USER_NAME: sport
+    # 修改为自己Coding仓库地址
+    - CODING_REF: e.coding.net/KevinsBobo/KevinsBobo.coding.me.git
+
