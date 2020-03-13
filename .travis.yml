@@ -31,7 +31,7 @@ env:
     # 修改为自己Github仓库地址
     - GH_REF: github.com/KevinsBobo/KevinsBobo.github.io.git
     # 修改为自己Coding用户名
-    - CODING_USER_NAME: sport
+    - CODING_USER_NAME: KevinsBobo
     # 修改为自己Coding仓库地址
     - CODING_REF: e.coding.net/KevinsBobo/KevinsBobo.coding.me.git
 
