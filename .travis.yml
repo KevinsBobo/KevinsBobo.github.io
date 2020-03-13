@@ -21,6 +21,8 @@ before_install:
   - chmod a+x script/validate-html
 install: script/bootstrap
 script: script/cibuild
+after_success:
+  - ./_travis.sh
 
 env:
   global:
