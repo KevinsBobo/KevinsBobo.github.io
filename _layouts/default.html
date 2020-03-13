@@ -5,10 +5,9 @@
     <title>{{ page.title | default: site.title }} - KevinsBobo Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link href='assets/css/opensans.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/mysyntax.css">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
     <section class="page-header">
@@ -66,15 +65,12 @@ s.setAttribute('data-timestamp', +new Date());
     </section>
 
     {% if site.google_analytics %}
-      <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-      </script>
-      <script type="text/javascript">
-        try {
-          var pageTracker = _gat._getTracker("{{ site.google_analytics }}");
-        pageTracker._trackPageview();
-        } catch(err) {}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ site.google_analytics }}');
       </script>
     {% endif %}
   </body>
