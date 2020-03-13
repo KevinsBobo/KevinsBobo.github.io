@@ -5,7 +5,8 @@ rvm: 2.5
 before_install:
   - chmod a+x script/bootstrap
   - chmod a+x script/cibuild
-  - chmod a+x script/rebund
   - chmod a+x script/release
+  - chmod a+x script/server
+  - chmod a+x script/validate-html
 install: script/bootstrap
 script: script/cibuild
